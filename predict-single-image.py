@@ -10,8 +10,8 @@ from keras.models import load_model
 from keras.preprocessing import image 
 import numpy as np
 test_model = load_model('model.h5')
-img = image.load_img('dataset/val/1/133.jpg',False,target_size=(28,28))
-#img = image.load_img('dataset/val/2/1978.jpg',False,target_size=(img_width,img_height))
+#img = image.load_img('dataset/val/1/133.jpg',False,target_size=(28,28))
+img = image.load_img('dataset/val/2/1978.jpg',False,target_size=(28,28))
 x = image.img_to_array(img)
 x = np.expand_dims(x, axis=0)
 result = test_model.predict(x)
