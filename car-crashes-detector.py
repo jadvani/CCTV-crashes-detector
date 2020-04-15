@@ -16,7 +16,7 @@ from keras import backend as K
 img_width, img_height = 28, 28
 
 train_data_dir = 'dataset/train'
-validation_data_dir = 'dataset/test'
+validation_data_dir = 'dataset/val'
 nb_train_samples = 1678
 nb_validation_samples = 360
 epochs = 50
