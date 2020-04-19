@@ -10,8 +10,8 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
-from sklearn.metrics import classification_report, confusion_matrix
-
+#from sklearn.metrics import confusion_matrix
+#import numpy as np
 #%%
 
 # dimensions of our images.
@@ -30,17 +30,21 @@ else:
     input_shape = (img_width, img_height, 3)
 #%%
 model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=input_shape))
+model.add(Conv2D(32, (2, 2), input_shape=input_shape))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(1, 1)))
 
-model.add(Conv2D(32, (3, 3)))
+model.add(Conv2D(32, (2, 2)))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(1, 1)))
 
-model.add(Conv2D(64, (3, 3)))
+model.add(Conv2D(32, (2, 2)))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(1, 1)))
+
+model.add(Conv2D(64, (2, 2)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(1, 1)))
 
 model.add(Flatten())
 model.add(Dense(64))
@@ -105,5 +109,9 @@ model.fit_generator(
     epochs=epochs,
     validation_data=validation_generator,
     validation_steps=nb_validation_samples // batch_size)
-
-model.save_weights('first_try.h5')
+#%%
+#Y_pred = model.predict_generator(validation_generator, nb_validation_samples // batch_size+1)
+#y_pred = np.argmax(Y_pred, axis=1)
+#print('Confusion Matrix')
+#print(confusion_matrix(validation_generator.classes, y_pred))
+#model.save_weights('first_try.h5')
