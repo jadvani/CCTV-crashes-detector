@@ -13,7 +13,15 @@ root_dir = 'F:/TFM_datasets/car-crashes-detector/dataset'
 posCls = '/1'
 negCls = '/2'
 
+def remove_folder_if_exists(dirpath):
+    if os.path.exists(dirpath) and os.path.isdir(dirpath):
+        shutil.rmtree(dirpath)
+
 elements = [posCls, negCls]
+
+remove_folder_if_exists(root_dir +'/train')
+remove_folder_if_exists(root_dir +'/val')
+remove_folder_if_exists(root_dir +'/test')
 
 os.makedirs(root_dir +'/train' + posCls)
 os.makedirs(root_dir +'/train' + negCls)
