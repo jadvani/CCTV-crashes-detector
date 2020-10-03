@@ -11,7 +11,12 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
 from sinerelu import SineReLU
-#from sklearn.metrics import classification_report, confusion_matrix
+import numpy as np
+from sklearn.metrics import classification_report, confusion_matrix
+
+from keras.applications.vgg16 import VGG16, decode_predictions
+
+modeloVGG16 = VGG16()
 #%%
 
 # dimensions of our images.
@@ -28,6 +33,9 @@ if K.image_data_format() == 'channels_first':
     input_shape = (3, img_width, img_height)
 else:
     input_shape = (img_width, img_height, 3)
+    
+
+
 #%%
 """
 
@@ -42,7 +50,7 @@ https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activat
 """    
     
 model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=input_shape))
+model.add(Conv2D(16, (3, 3), input_shape=input_shape))
 model.add(Activation(SineReLU()))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
@@ -117,5 +125,10 @@ model.fit_generator(
     epochs=epochs,
     validation_data=validation_generator,
     validation_steps=nb_validation_samples // batch_size)
-
+#Y_pred = model.predict_generator(validation_generator, 2*nb_validation_samples // batch_size+1)
+#print('Confusion Matrix')
+#print(confusion_matrix(validation_generator.classes, Y_pred))
+#print('Classification Report')
+#target_names = ['1', '2']
+#print(classification_report(validation_generator.classes, Y_pred, target_names=target_names))
 model.save_weights('first_try.h5')
