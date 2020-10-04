@@ -22,12 +22,13 @@ def get_countour_centers(countour_array):
     return centers
 #leer frames de una carpeta
 def read_frames(frames_path):
-    col_frames = os.listdir(frames_path)
-    col_frames.sort(key=lambda f: int(re.sub('\D', '', f)))
+    col_frames = [f for f in os.listdir(frames_path) if (f.endswith('.jpg') or f.endswith('.png'))] #quitar ficheros innecesarios
+    print(len(col_frames))
+    col_frames.sort(key=lambda f:int(re.sub('\D', '', f)))
     col_images=[]
     
     for i in col_frames:
-        col_images.append(cv2.imread(frames_path+i))
+        col_images.append(cv2.imread(frames_path+"\\"+i))
         
     return col_images
 
@@ -67,10 +68,10 @@ def diff_frames(img1, img2):
         final_countours.append([x,y,w,h])
     
     len(valid_cntrs)
-    return col_images[13].copy(), valid_cntrs, final_countours
+    return img1.copy(), valid_cntrs, final_countours
 
-col_images = read_frames('frames/')
-[dmy, valid_cntrs, final_countours]=diff_frames(col_images[13],col_images[14])
+col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000005')
+[dmy, valid_cntrs, final_countours]=diff_frames(col_images[105],col_images[106])
 centers=get_countour_centers(final_countours)
 dmy = draw_centers(centers, dmy)
 cv2.drawContours(dmy, valid_cntrs, -1, (127,200,0), 2)
