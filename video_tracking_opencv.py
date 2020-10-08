@@ -23,12 +23,17 @@ def get_countour_centers(countour_array):
 #leer frames de una carpeta
 def read_frames(frames_path):
     col_frames = [f for f in os.listdir(frames_path) if (f.endswith('.jpg') or f.endswith('.png'))] #quitar ficheros innecesarios
-    #print(len(col_frames))
     col_frames.sort(key=lambda f:int(re.sub('\D', '', f)))
     col_images=[]
     
     for i in col_frames:
-        col_images.append(cv2.imread(frames_path+"\\"+i))
+        try:
+            img = cv2.imread(frames_path+"\\"+i)
+            height=img.shape[0]
+            width=img.shape[1]
+            col_images.append(img)
+        except: 
+            print("image",i, "is corrupted.")
         
     return col_images
 
@@ -112,7 +117,7 @@ def draw_squared_accident(centers, img, ED):
         
    
 
-col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000007')
+col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000051')
 m = 0
 
 # import sys
