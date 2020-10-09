@@ -107,6 +107,7 @@ while True:
 				(centerX, centerY, width, height) = box.astype("int")
 				# use the center (x, y)-coordinates to derive the top
 				# and and left corner of the bounding box
+                    print("x,y,w,h: ",centerX, centerY, width, height)
 				x = int(centerX - (width / 2))
 				y = int(centerY - (height / 2))
 				# update our list of bounding box coordinates,
@@ -114,6 +115,7 @@ while True:
 				boxes.append([x, y, int(width), int(height)])
 				confidences.append(float(confidence))
 				classIDs.append(classID)
+                    print("ID: ",classID)
                 
 	# apply non-maxima suppression to suppress weak, overlapping
 	# bounding boxes

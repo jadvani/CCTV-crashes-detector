@@ -26,5 +26,7 @@ def read_frames(frames_path):
         
     return image_dict
 
-col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000051')
-
+col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000001')
+# img = col_images['701.jpg'] 
+# cv2.rectangle(img, (141, 526), (75+141, 526+28), (255,0,0), 2) # las áreas de annotations no corresponden con el accidente
+# plt.imshow(img)
