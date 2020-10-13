@@ -115,9 +115,13 @@ def draw_squared_accident(centers, img, ED):
     else: 
         return img
         
-   
+def set_up_figure():
+    fig, ax = plt.subplots()
+    fig.canvas.mpl_connect()
+    fig.canvas.mpl_connect()
+    return fig, ax
 
-col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000051')
+col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000002')
 m = 0
 
 # import sys
@@ -143,9 +147,13 @@ for i in range(0,len(col_images),2):
             dmy=draw_squared_accident(centers, dmy, ED)
         #print(ED.reshape((len(centers),len(centers))))
         plt.imshow(dmy)
+        
+
         m = m + 1 
         previous_centers = len(centers)
         plt.pause(0.1)
+        plt.show()
+
         
         #plt.show()
 # sys.stdout.close()

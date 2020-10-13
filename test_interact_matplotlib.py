@@ -14,7 +14,7 @@ ydata = np.sin(xdata)
 
 fig, ax = plt.subplots()
 line, = ax.plot(xdata, ydata)
-img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\000051\\130.jpg")
+img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\000013\\165.jpg")
 
 
 def line_select_callback(eclick, erelease):
@@ -22,7 +22,7 @@ def line_select_callback(eclick, erelease):
     x2, y2 = erelease.xdata, erelease.ydata
 
     rect = plt.Rectangle( (min(x1,x2),min(y1,y2)), np.abs(x1-x2), np.abs(y1-y2) )
-    print(x1,y1,x2-x1,y2-y1)
+    print("["+str(int(x1))+","+str(int(y1))+","+str(int(x2-x1))+","+str(int(y2-y1))+"]")
     ax.add_patch(rect)
 
 

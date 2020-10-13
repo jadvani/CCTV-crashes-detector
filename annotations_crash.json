@@ -2,59 +2,87 @@
    {
       "folder":"000000",
       "start":498,
-      "end":560
+	  "start_coords":[270,195,94,70],
+      "end":560,
+	  "end_coords":[350,310,126,42]
    },{
       "folder":"000001",
       "start":307,
-      "end":459
+	  "start_coords":[503,291,240,85],
+      "end":459,
+	  "end_coords":[402,294,126,80]
    },{
       "folder":"000002",
       "start":45,
-      "end":222
+	  "start_coords":[30,57,104,46],
+      "end":222,
+	  "end_coords":[29,51,235,140]
    },{
       "folder":"000003",
       "start":141,
-      "end":232
+	  "start_coords":[182,234,304,185],
+      "end":232,
+	  "end_coords":[120,412,312,216]
    },{
       "folder":"000004",
       "start":33,
-      "end":72
+	  "start_coords":[274,65,168,98],
+      "end":72,
+	  "end_coords":[338,80,138,78]
    },{
       "folder":"000005",
       "start":84,
-      "end":154
+	  "start_coords":[33,90,167,136],
+      "end":154,
+	  "end_coords":[288,96,86,85]
    },{
       "folder":"000006",
       "start":84,
-      "end":125
+	  "start_coords":[12,77,273,114],
+      "end":125,
+	  "end_coords":[389,110,89,59]
    },{
       "folder":"000007",
       "start":90,
-      "end":132
+	  "start_coords":[25,127,371,231],
+      "end":132,
+	  "end_coords":[393,94,81,127]
    },{
       "folder":"000008",
       "start":84,
-      "end":108
+	  "start_coords":[338,157,139,103],
+      "end":108,
+	  "end_coords":[182,137,260,84]
    },{
       "folder":"000009",
       "start":85,
-      "end":114
+	  "start_coords":[268,113,209,110],
+      "end":114,
+	  "end_coords":[262,80,213,134]
    },{
       "folder":"000010",
-      "start":62,
-      "end":192
+      "start":64,
+	  "start_coords":[230,99,235,81],
+      "end":76,
+	  "end_coords":[257,91,172,83]
    },{
       "folder":"000011",
       "start":130,
-      "end":245
+	  "start_coords":[177,68,97,74],
+      "end":147,
+	  "end_coords":[232,61,110,78]
    },{
       "folder":"000012",
-      "start":148,
-      "end":175
+      "start":152,
+	  "start_coords":[111,130,284,142],
+      "end":163,
+	  "end_coords":[307,149,167,88]
    },{
       "folder":"000013",
-      "start":151,
-      "end":224
+      "start":153,
+	  "start_coords":[296,75,168,80],
+      "end":224,
+	  "end_coords":[289,71,113,74]
    },{
       "folder":"000014",
       "start":99,
@@ -253,7 +281,287 @@
       "end":143
    },{
       "folder":"000063",
-      "start":69,
+      "start":78,
+      "end":91
+   },{
+      "folder":"000064",
+      "start":125,
+      "end":148
+   },{
+      "folder":"000065",
+      "start":145,
+      "end":153
+   },{
+      "folder":"000066",
+      "start":165,
+      "end":212
+   },{
+      "folder":"000067",
+      "start":85,
+      "end":105
+   },{
+      "folder":"000068",
+      "start":421,
+      "end":494
+   },{
+      "folder":"000069",
+      "start":210,
+      "end":222
+   },{
+      "folder":"000070",
+      "start":170,
+      "end":210
+   },{
+      "folder":"000071",
+      "start":18,
+      "end":39
+   },{
+      "folder":"000072",
+      "start":9,
+      "end":24
+   },{
+      "folder":"000073",
+      "start":28,
+      "end":53
+   },{
+      "folder":"000074",
+      "start":3,
+      "end":22
+   },{
+      "folder":"000075",
+      "start":4,
+      "end":17
+   },{
+      "folder":"000076",
+      "start":10,
+      "end":20
+   },{
+      "folder":"000077",
+      "start":25,
+      "end":38
+   },{
+      "folder":"000078",
+      "start":10,
+      "end":25
+   },{
+      "folder":"000079",
+      "start":45,
+      "end":51
+   },{
+      "folder":"000080",
+      "start":11,
+      "end":20
+   },{
+      "folder":"000081",
+      "start":76,
+      "end":80
+   },{
+      "folder":"000082",
+      "start":26,
+      "end":40
+   },{
+      "folder":"000083",
+      "start":21,
+      "end":25
+   },{
+      "folder":"000084",
+      "start":7,
+      "end":20
+   },{
+      "folder":"000085",
+      "start":5,
+      "end":11
+   },{
+      "folder":"000086",
+      "start":79,
+      "end":90
+   },{
+      "folder":"000087",
+      "start":13,
+      "end":28
+   },{
+      "folder":"000088",
+      "start":13,
+      "end":28
+   },{
+      "folder":"000089",
+      "start":6,
+      "end":10
+   },{
+      "folder":"000090",
+      "start":15,
+      "end":23
+   },{
+      "folder":"000091",
+      "start":7,
+      "end":14
+   },{
+      "folder":"000092",
+      "start":7,
+      "end":14
+   },{
+      "folder":"000093",
+      "start":90,
+      "end":157
+   },{
+      "folder":"000094",
+      "start":107,
+      "end":250
+   },{
+      "folder":"000095",
+      "start":104,
+      "end":153
+   },{
+      "folder":"000096",
+      "start":47,
+      "end":76
+   },{
+      "folder":"000097",
+      "start":41,
+      "end":61
+   },{
+      "folder":"000098",
+      "start":120,
       "end":143
+   },{
+      "folder":"000099",
+      "start":50,
+      "end":87
+   },{
+      "folder":"000100",
+      "start":53,
+      "end":82
+   },{
+      "folder":"000101",
+      "start":54,
+	  "start_coords":[207,34,76,52],
+      "end":61,
+	  "end_coords":[224,35,60,44]
+   },{
+      "folder":"000102",
+      "start":70,
+	  "start_coords":[231,21,49,42],
+      "end":152,
+	  "end_coords":[192,23,42,53]
+   },{
+      "folder":"000103",
+      "start":48,
+	  "start_coords":[204,53,72,71],
+      "end":82,
+	  "end_coords":[200,58,67,77]
+   },{
+      "folder":"000104",
+      "start":0,
+	  "start_coords":[232,55,86,57],
+      "end":39,
+	  "end_coords":[191,37,103,69]
+   },{
+      "folder":"000105",
+      "start":64,
+	  "start_coords":[79,58,58,44],
+      "end":79,
+	  "end_coords":[61,65,57,58]
+   },{
+      "folder":"000106",
+      "start":133,
+	  "start_coords":[223,135,91,98],
+      "end":177,
+	  "end_coords":[157,148,160,88]
+   },{
+      "folder":"000107",
+      "start":46,
+	  "start_coords":[11,36,73,60],
+      "end":138,
+	  "end_coords":[3,32,79,66]
+   },{
+      "folder":"000108",
+      "start":199,
+	  "start_coords":[199,37,59,45],
+      "end":244,
+	  "end_coords":[160,18,46,40]
+   },{
+      "folder":"000109",
+      "start":5,
+	  "start_coords":[119,15,59,102],
+      "end":57,
+	  "end_coords":[144,32,121,117]
+   },{
+      "folder":"000110",
+      "start":4,
+	  "start_coords":[185,45,34,33],
+      "end":53,
+	  "end_coords":[146,57,61,44]
+   },{
+      "folder":"000111",
+      "start":87,
+	  "start_coords":[2,55,200,91],
+      "end":108,
+	  "end_coords":[22,39,136,88]
+   },{
+      "folder":"000112",
+      "start":40,
+	  "start_coords":[207,49,30,33],
+      "end":98,
+	  "end_coords":[221,58,52,45]
+   },{
+      "folder":"000113",
+      "start":57,
+	  "start_coords":[102,13,91,66],
+      "end":82,
+	  "end_coords":[129,26,79,58]
+   },{
+      "folder":"000114",
+      "start":95,
+	  "start_coords":[145,32,101,79],
+      "end":179,
+	  "end_coords":[165,44,92,70]
+   },{
+      "folder":"000115",
+      "start":76,
+	  "start_coords":[10,58,117,53],
+      "end":93,
+	  "end_coords":[2,67,93,60]
+   },{
+      "folder":"000116",
+      "start":72,
+	  "start_coords":[100,155,111,58],
+      "end":80,
+	  "end_coords":[103,153,114,85]
+   },{
+      "folder":"000117",
+      "start":33,
+	  "start_coords":[7,53,58,46],
+      "end":83,
+	  "end_coords":[6,85,99,75]
+   },{
+      "folder":"000118",
+      "start":51,
+	  "start_coords":[35,61,36,54],
+      "end":94,
+	  "end_coords":[36,71,68,48]
+   },{
+      "folder":"000119",
+      "start":141,
+	  "start_coords":[5,37,99,54],
+      "end":174,
+	  "end_coords":[14,52,79,93]
+   },{
+      "folder":"000120",
+      "start":111,
+	  "start_coords":[123,15,38,24],
+      "end":124,
+	  "end_coords":[105,13,38,23]
+   },{
+      "folder":"000121",
+      "start":153,
+	  "start_coords":[136,22,27,20],
+      "end":184,
+	  "end_coords":[117,19,44,20]
+   },{
+      "folder":"000122",
+      "start":40,
+	  "start_coords":[153,70,130,75],
+      "end":53,
+	  "end_coords":[162,56,81,53]
    }
 ]

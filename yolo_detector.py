@@ -4,7 +4,7 @@ import time
 import cv2
 import os
 import matplotlib.pyplot as plt
-
+# import geopandas as gpd
 from shapely.geometry import box
 
 
@@ -86,30 +86,51 @@ class yolo_detector():
 
 obj = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
 obj.print_folderpath()
-img,boxes, ids=obj.process_image("F:\\TFM_datasets\\extracted_frames\\000051\\130.jpg")
+img,boxes, ids=obj.process_image("F:\\TFM_datasets\\extracted_frames\\000101\\70.jpg")
 # plt.imshow(img)
 # plt.pause(0.1)
 rectangles= []
-interesections = []
+intersections = []
 for sub_box in boxes:
     rectangles.append(box(abs(int(sub_box[0])),abs(int(sub_box[1])),abs(int(sub_box[2])),abs(int(sub_box[3]))))
 
+def union(a,b):
+  x = min(a[0], b[0])
+  y = min(a[1], b[1])
+  w = max(a[0]+a[2], b[0]+b[2]) - x
+  h = max(a[1]+a[3], b[1]+b[3]) - y
+  return (x, y, w, h)
+
+def return_xywh(coordinates):
+    return  coordinates[0],coordinates[1],coordinates[2]-coordinates[0],coordinates[3]-coordinates[1]        
+
 #TODO view intersections!
-for i in range(0, len(rectangles)-1):
-    for j in range(0, len(rectangles)-1):
-        if(i!=j):
-            intersection = rectangles[i].intersection(rectangles[j])
-            if(not(intersection.is_empty)):
-                if not any(p.equals(intersection) for p in interesections):
-                    interesections.append(intersection)
+i = len(rectangles)-1
 
-for intersection in interesections:
-    print(intersection)
-    
-    
-    
-    
+# for rectangle in rectangles:
+#     print(rectangle.exterior.coords.xy)
+# while (i>0):
+#     rectangles_copy = rectangles.copy()
+#     j = len(rectangles_copy)-1
+#     while(j>0):
+#         if(i!=j):
+#             intersection = rectangles[i].intersection(rectangles_copy[j])
+#             # print("1: ",rectangles[i].bounds)
+#             # print("2: ",rectangles_copy[j].bounds)
+#             if(not(intersection.is_empty)):
+#                 # intersections.append(union(return_xywh(rectangles[i].bounds),return_xywh(rectangles_copy[j].bounds)))
+#                 intersections.append(intersection)
+#         del rectangles_copy[j]
+#         j = j-1
+#     del rectangles[i]
+#     i = i-1
+# print(len(intersections))
+# for intersection in intersections:
+#     gpd.GeoSeries(intersection).plot()
+#     # cv2.rectangle(img, (int(intersection[0]), int(intersection[2])), (int(intersection[1]+intersection[0]), int(intersection[3]+intersection[2])), (255, 0, 0), 2)
+       
+# plt.imshow(img)
+# plt.pause(0.1)    
 
-        
 
 
