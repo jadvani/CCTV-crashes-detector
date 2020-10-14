@@ -85,196 +85,292 @@
 	  "end_coords":[289,71,113,74]
    },{
       "folder":"000014",
-      "start":99,
-      "end":135
+      "start":101,
+	  "start_coords":[144,116,128,107],
+      "end":135,
+	  "end_coords":[188,97,202,88]
    },{
       "folder":"000015",
-      "start":98,
-      "end":122
+      "start":99,
+	  "start_coords":[234,125,139,61],
+      "end":111,
+	  "end_coords":[301,124,107,57]
    },{
       "folder":"000016",
-      "start":93,
-      "end":160
+      "start":94,
+	  "start_coords":[283,98,84,47],
+      "end":122,
+	  "end_coords":[255,96,65,40]
    },{
       "folder":"000017",
-      "start":56,
-      "end":140
+      "start":47,
+	  "start_coords":[92,185,114,98],
+      "end":100,
+	  "end_coords":[57,174,87,51]
    },{
       "folder":"000018",
-      "start":114,
-      "end":170
+      "start":118,
+	  "start_coords":[103,165,158,60],
+      "end":139,
+	  "end_coords":[310,171,137,48]
    },{
       "folder":"000019",
       "start":100,
-      "end":172
+	  "start_coords":[23,165,121,54],
+      "end":135,
+	  "end_coords":[18,165,125,50]
    },{
       "folder":"000020",
-      "start":68,
-      "end":120
+      "start":73,
+	  "start_coords":[281,187,144,83],
+      "end":90,
+	  "end_coords":[342,182,102,78]
    },{
       "folder":"000021",
       "start":85,
-      "end":119
+	  "start_coords":[0,175,128,74],
+      "end":102,
+	  "end_coords":[24,165,113,71]
    },{
       "folder":"000022",
       "start":99,
-      "end":143
+	  "start_coords":[0,181,105,36],
+      "end":143,
+	  "end_coords":[24,179,111,44]
    },{
       "folder":"000023",
       "start":71,
-      "end":122
+	  "start_coords":[180,88,166,104],
+      "end":97,
+	  "end_coords":[270,94,208,89]
    },{
       "folder":"000024",
-      "start":93,
-      "end":150
+      "start":97,
+	  "start_coords":[1,129,92,51],
+      "end":103,
+	  "end_coords":[24,127,89,55]
    },{
       "folder":"000025",
       "start":81,
-      "end":146
+	  "start_coords":[1,173,75,56],
+      "end":98,
+	  "end_coords":[14,179,104,55]
    },{
       "folder":"000026",
       "start":65,
-      "end":141
+	  "start_coords":[910,292,98,103],
+      "end":71,
+	  "end_coords":[704,310,154,90]
    },{
       "folder":"000027",
-      "start":50,
-      "end":102
+      "start":51,
+	  "start_coords":[1011,261,144,95],
+      "end":72,
+	  "end_coords":[866,220,234,131]
    },{
       "folder":"000028",
-      "start":194,
-      "end":264
+      "start":198,
+	  "start_coords":[278,142,87,40],
+      "end":205,
+	  "end_coords":[271,147,80,28]
    },{
       "folder":"000029",
-      "start":38,
-      "end":77
+      "start":48,
+	  "start_coords":[47,48,132,51],
+      "end":60,
+	  "end_coords":[70,37,138,54]
    },{
       "folder":"000030",
-      "start":123,
-      "end":150
+      "start":124,
+	  "start_coords":[88,0,93,55],
+      "end":134,
+	  "end_coords":[109,2,74,51]
    },{
       "folder":"000031",
       "start":12,
-      "end":67
+	  "start_coords":[159,97,58,38],
+      "end":45,
+	  "end_coords":[193,89,47,36]
    },{
       "folder":"000032",
-      "start":6,
-      "end":24
+      "start":11,
+	  "start_coords":[127,48,54,47],
+      "end":24,
+	  "end_coords":[158,48,49,36]
    },{
       "folder":"000033",
-      "start":66,
-      "end":170
+      "start":80,
+	  "start_coords":[222,2,50,63],
+      "end":152,
+	  "end_coords":[201,2,79,61]
    },{
       "folder":"000034",
       "start":39,
-      "end":90
+	  "start_coords":[160,12,118,49],
+      "end":50,
+	  "end_coords":[178,14,63,43]
    },{
       "folder":"000035",
-      "start":122,
-      "end":170
+      "start":123,
+	  "start_coords":[120,90,42,28],
+      "end":170,
+	  "end_coords":[136,93,48,27]
    },{
       "folder":"000036",
-      "start":98,
-      "end":166
+      "start":101,
+	  "start_coords":[14,52,127,78],
+      "end":146,
+	  "end_coords":[0,57,114,87]
    },{
       "folder":"000037",
       "start":0,
-      "end":59
+	  "start_coords":[162,53,112,87],
+      "end":22,
+	  "end_coords":[78,46,118,110]
    },{
       "folder":"000038",
-      "start":10,
-      "end":152
+      "start":25,
+	  "start_coords":[223,103,94,74],
+      "end":152,
+	  "end_coords":[180,78,97,74]
    },{
       "folder":"000039",
-      "start":19,
-      "end":91
+      "start":21,
+	  "start_coords":[22,0,122,53],
+      "end":36,
+	  "end_coords":[21,1,116,71]
    },{
       "folder":"000040",
-      "start":51,
-      "end":160
+      "start":54,
+	  "start_coords":[186,65,53,39],
+      "end":68,
+	  "end_coords":[189,21,87,81]
    },{
       "folder":"000041",
-      "start":75,
-      "end":124
+      "start":77,
+	  "start_coords":[9,77,138,81],
+      "end":92,
+	  "end_coords":[121,61,129,72]
    },{
       "folder":"000042",
-      "start":59,
-      "end":132
+      "start":60,
+	  "start_coords":[165,88,70,74],
+      "end":85,
+	  "end_coords":[195,79,111,58]
    },{
       "folder":"000043",
-      "start":3,
-      "end":92
+      "start":7,
+	  "start_coords":[144,0,174,178],
+      "end":30,
+	  "end_coords":[57,0,260,177]
    },{
       "folder":"000044",
-      "start":526,
-      "end":591
+      "start":528,
+	  "start_coords":[163,171,172,90],
+      "end":545,
+	  "end_coords":[195,184,148,72]
    },{
       "folder":"000045",
-      "start":1051,
-      "end":1105
+      "start":1053,
+	  "start_coords":[98,45,50,27],
+      "end":1059,
+	  "end_coords":[124,44,39,34]
    },{
       "folder":"000046",
-      "start":90,
-      "end":140
+      "start":94,
+	  "start_coords":[93,176,59,42],
+      "end":104,
+	  "end_coords":[101,174,74,48]
    },{
       "folder":"000047",
-      "start":168,
-      "end":202
+      "start":169,
+	  "start_coords":[487,186,193,90],
+      "end":176,
+	  "end_coords":[544,199,152,77]
    },{
       "folder":"000048",
-      "start":69,
-      "end":143
+      "start":72,
+	  "start_coords":[77,79,75,33],
+      "end":143,
+	  "end_coords":[95,78,51,30]
    },{
       "folder":"000049",
-      "start":38,
-      "end":67
+      "start":39,
+	  "start_coords":[55,183,221,135],
+      "end":47,
+	  "end_coords":[45,174,158,124]
    },{
       "folder":"000050",
-      "start":300,
-      "end":379
+      "start":302,
+	  "start_coords":[234,109,153,84],
+      "end":311,
+	  "end_coords":[259,105,124,73]
    },{
       "folder":"000051",
-      "start":69,
-      "end":143
+      "start":119,
+	  "start_coords":[148,108,94,86],
+      "end":136,
+	  "end_coords":[139,92,120,69]
    },{
       "folder":"000052",
-      "start":168,
-      "end":266
+      "start":169,
+	  "start_coords":[9,117,246,143],
+      "end":194,
+	  "end_coords":[149,106,203,84]
    },{
       "folder":"000053",
-      "start":59,
-      "end":148
+      "start":62,
+	  "start_coords":[160,32,243,127],
+      "end":92,
+	  "end_coords":[193,32,211,118]
    },{
       "folder":"000054",
-      "start":75,
-      "end":125
+      "start":84,
+	  "start_coords":[233,14,139,117],
+      "end":125,
+	  "end_coords":[151,17,205,102]
    },{
       "folder":"000055",
-      "start":262,
-      "end":325
+      "start":275,
+	  "start_coords":[180,120,113,82],
+      "end":306,
+	  "end_coords":[228,116,119,69]
    },{
       "folder":"000056",
-      "start":161,
-      "end":222
+      "start":166,
+	  "start_coords":[208,110,99,109],
+      "end":222,
+	  "end_coords":[269,95,142,97]
    },{
       "folder":"000057",
-      "start":46,
-      "end":99
+      "start":51,
+	  "start_coords":[44,112,214,108],
+      "end":67,
+	  "end_coords":[40,99,232,97]
    },{
       "folder":"000058",
-      "start":224,
-      "end":283
+      "start":228,
+	  "start_coords":[212,71,123,77],
+      "end":235,
+	  "end_coords":[170,65,115,71]
    },{
       "folder":"000059",
-      "start":168,
-      "end":279
+      "start":171,
+	  "start_coords":[123,115,243,122],
+      "end":279,
+	  "end_coords":[173,101,210,103]
    },{
       "folder":"000060",
-      "start":118,
-      "end":183
+      "start":121,
+	  "start_coords":[1,98,138,86],
+      "end":147,
+	  "end_coords":[30,111,248,98]
    },{
       "folder":"000061",
-      "start":156,
-      "end":203
+      "start":160,
+	  "start_coords":[293,32,98,99],
+      "end":191,
+	  "end_coords":[79,19,137,87]
    },{
       "folder":"000062",
       "start":69,
@@ -426,11 +522,15 @@
    },{
       "folder":"000099",
       "start":50,
-      "end":87
+	  "start_coords":[194,31,73,58],
+      "end":87,
+	  "end_coords":[103,6,101,55]
    },{
       "folder":"000100",
       "start":53,
-      "end":82
+	  "start_coords":[0,59,80,59],
+      "end":82,
+	  "end_coords":[25,54,71,54]
    },{
       "folder":"000101",
       "start":54,

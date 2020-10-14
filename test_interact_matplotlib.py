@@ -14,7 +14,7 @@ ydata = np.sin(xdata)
 
 fig, ax = plt.subplots()
 line, = ax.plot(xdata, ydata)
-img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\000013\\165.jpg")
+img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\000061\\191.jpg")
 
 
 def line_select_callback(eclick, erelease):
