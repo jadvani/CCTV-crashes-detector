@@ -500,55 +500,81 @@
    },{
       "folder":"000083",
       "start":21,
-      "end":25
+	  "start_coords":[127,57,89,101],
+      "end":25,
+	  "end_coords":[65,58,125,63]
    },{
       "folder":"000084",
-      "start":7,
-      "end":20
+      "start":13,
+	  "start_coords":[133,63,114,94],
+      "end":20,
+	  "end_coords":[125,63,112,95]
    },{
       "folder":"000085",
       "start":5,
-      "end":11
+	  "start_coords":[191,45,28,32],
+      "end":11,
+	  "end_coords":[105,79,74,47]
    },{
       "folder":"000086",
       "start":79,
-      "end":90
+	  "start_coords":[81,45,60,69],
+      "end":90,
+	  "end_coords":[67,52,67,59]
    },{
       "folder":"000087",
       "start":13,
-      "end":28
+	  "start_coords":[194,54,47,49],
+      "end":28,
+	  "end_coords":[202,61,80,56]
    },{
       "folder":"000088",
-      "start":13,
-      "end":28
+      "start":6,
+	  "start_coords":[136,15,47,40],
+      "end":28,
+	  "end_coords":[127,20,35,27]
    },{
       "folder":"000089",
-      "start":6,
-      "end":10
+      "start":5,
+	  "start_coords":[93,90,60,56],
+      "end":10,
+	  "end_coords":[27,94,82,43]
    },{
       "folder":"000090",
       "start":15,
-      "end":23
+	  "start_coords":[182,41,58,69],
+      "end":23,
+	  "end_coords":[172,48,72,76]
    },{
       "folder":"000091",
       "start":7,
-      "end":14
+	  "start_coords":[9,94,63,45],
+      "end":14,
+	  "end_coords":[45,84,65,47]
    },{
       "folder":"000092",
       "start":7,
-      "end":14
+	  "start_coords":[931,208,170,126],
+      "end":14,
+	  "end_coords":[910,180,178,162]
    },{
       "folder":"000093",
       "start":90,
-      "end":157
+	  "start_coords":[740,0,175,121],
+      "end":157,
+	  "end_coords":[719,4,160,90]
    },{
       "folder":"000094",
-      "start":107,
-      "end":250
+      "start":116,
+	  "start_coords":[567,443,118,105],
+      "end":139,
+	  "end_coords":[729,410,85,85]
    },{
       "folder":"000095",
-      "start":104,
-      "end":153
+      "start":123,
+	  "start_coords":[140,46,45,43],
+      "end":153,
+	  "end_coords":[160,45,65,58]
    },{
       "folder":"000096",
       "start":57,
