@@ -121,7 +121,7 @@ def set_up_figure():
     fig.canvas.mpl_connect()
     return fig, ax
 
-col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000002')
+col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000079')
 m = 0
 
 # import sys
@@ -146,13 +146,18 @@ for i in range(0,len(col_images),2):
             print("posible accidente!")
             dmy=draw_squared_accident(centers, dmy, ED)
         #print(ED.reshape((len(centers),len(centers))))
+        txt = plt.text(10,10,str(i),horizontalalignment='center',verticalalignment='center')
+        plt.draw()
         plt.imshow(dmy)
+
         
 
         m = m + 1 
         previous_centers = len(centers)
         plt.pause(0.1)
         plt.show()
+        txt.remove()
+        plt.draw()
 
         
         #plt.show()
