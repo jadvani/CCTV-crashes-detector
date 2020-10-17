@@ -29,7 +29,7 @@ def read_frames(frames_path):
     for i in col_frames:
         try:
             img = cv2.imread(frames_path+"\\"+i)
-            height=img.shape[0]
+            height=img.shape[0] # si la imagen está vacía, al tratar de ver el tamaño salta un error
             width=img.shape[1]
             col_images.append(img)
         except: 
@@ -37,9 +37,6 @@ def read_frames(frames_path):
         
     return col_images
 
-# leer una imagen como escala de grises
-def read_gray(image):
-    return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
 def draw_centers(centers,dmy):
@@ -48,34 +45,18 @@ def draw_centers(centers,dmy):
         dmy[center[1],center[0]]=red
     return dmy
 
-def diff_frames(img1, img2):
-    grayA = read_gray(img1)
-    grayB = read_gray(img2)
-    
-    #diferencia entre imagenes 
-    diff_image = cv2.absdiff(grayB, grayA)
-    ret, thresh = cv2.threshold(diff_image, 30, 255, cv2.THRESH_BINARY)
 
-    
-    # dilatacion
-    kernel = np.ones((3,3),np.uint8)
-    dilated = cv2.dilate(thresh,kernel,iterations = 1)
-    
-    #detectamos contornos obtenidos en los dif frames
-    contours, hierarchy = cv2.findContours(dilated.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
-    
-    valid_cntrs = []
-    final_countours = []
-    
-    for i,cntr in enumerate(contours):
-        x,y,w,h = cv2.boundingRect(cntr)
-        valid_cntrs.append(cntr)
-        final_countours.append([x,y,w,h])
-    
-    len(valid_cntrs)
-    return img1.copy(), valid_cntrs, final_countours
+# representamos distancias entre 2 elementos móviles en el transcurso de 2 fotogramas como una matriz. 
 
-# representamos distancias entre coches en el transcurso de 2 fotogramas. 
+#     1   2   3
+# 1   0   X   Y
+# 2   X   0   Z
+# 3   Y   Z   0 
+#
+# Teniendo 3 vehículos / centroides, la matriz representa 
+# las distancias entre cada uno de ellos. 
+# La diagonal es 0 siempre, y tiene un tamaño igual al de número de centroides.
+
 def euclidean_matrix(centers):
     euclidean_distances = []
     for i in range(len(centers)):
@@ -86,7 +67,6 @@ def euclidean_matrix(centers):
 import collections
 
 def is_sublist_in_list(pattern, list_coordinates):
-    # Using Counter 
     inside = False
     for elem in list_coordinates: 
         if collections.Counter(elem) == collections.Counter(pattern) : 
@@ -121,45 +101,78 @@ def set_up_figure():
     fig.canvas.mpl_connect()
     return fig, ax
 
-col_images = read_frames('F:\\TFM_datasets\\extracted_frames\\000079')
-m = 0
-
-# import sys
-# sys.stdout=open("test.txt","w")
-previous_centers=0
-for i in range(0,len(col_images),2):
+                        #print(ED.reshape((len(centers),len(centers))))
+class opencv_processor():
     
-    if(i<len(col_images)-1):
-        [dmy, valid_cntrs, final_countours]=diff_frames(col_images[i],col_images[i+1])
+    def __init__(self,col_images, interval=2):
+        #read_frames('F:\\TFM_datasets\\extracted_frames\\000079')
+        self.col_images = col_images
+        self.interval = interval
+        
+        # leer una imagen como escala de grises
+    def read_gray(image):
+        return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        
+    # similar al juego de las diferencias, restamos dos fotogramas para ver qué es lo que cambia de un instante a otro.
+    def diff_frames(self,img1, img2):
+        grayA = self.read_gray(img1)
+        grayB = self.read_gray(img2)
+        
+        #diferencia entre imagenes 
+        diff_image = cv2.absdiff(grayB, grayA)
+        ret, thresh = cv2.threshold(diff_image, 30, 255, cv2.THRESH_BINARY)
+    
+        
+        # dilatacion
+        kernel = np.ones((3,3),np.uint8)
+        dilated = cv2.dilate(thresh,kernel,iterations = 1)
+        
+        #detectamos contornos obtenidos en los dif frames
+        contours, hierarchy = cv2.findContours(dilated.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+        
+        valid_cntrs = []
+        final_countours = []
+        
+        for i,cntr in enumerate(contours):
+            x,y,w,h = cv2.boundingRect(cntr)
+            valid_cntrs.append(cntr)
+            final_countours.append([x,y,w,h])
+        
+        len(valid_cntrs)
+        return img1.copy(), valid_cntrs, final_countours
+    
+    def detect_matrix_changes(self,dmy,final_countours,i,valid_cntrs,previous_centers,m):
         centers=get_countour_centers(final_countours)
         dmy = draw_centers(centers, dmy)
         cv2.drawContours(dmy, valid_cntrs, -1, (127,200,0), 2)
-
-        
-        
-        #print(centers)
-        #print("distancia euclidea: ",round(distance.euclidean(centers[0],centers[1]),2))
+                
+                                #print(centers)
+                                #print("distancia euclidea: ",round(distance.euclidean(centers[0],centers[1]),2))
         ED = np.array(euclidean_matrix(centers))
         ED = ED.reshape((len(centers),len(centers)))
-        print("Imágenes ",i,i+1,". La matriz ",m," tiene ",len(centers)," siluetas")
+        print("Imágenes ",i,(i+(self.interval-1)),". La matriz ",m," tiene ",len(centers)," siluetas")
         if(previous_centers>len(centers) and previous_centers>0 and len(centers)>0):
             print("posible accidente!")
             dmy=draw_squared_accident(centers, dmy, ED)
-        #print(ED.reshape((len(centers),len(centers))))
-        txt = plt.text(10,10,str(i),horizontalalignment='center',verticalalignment='center')
-        plt.draw()
-        plt.imshow(dmy)
-
+        return dmy,centers
         
-
-        m = m + 1 
-        previous_centers = len(centers)
-        plt.pause(0.1)
-        plt.show()
-        txt.remove()
-        plt.draw()
-
-        
-        #plt.show()
-# sys.stdout.close()
-
+    def process_folder(self):
+        m = 0  
+        previous_centers=0
+        for i in range(0,len(self.col_images),self.interval):
+            
+            if(i<len(self.col_images)-1):
+                [dmy, valid_cntrs, final_countours]=self.diff_frames(self.col_images[i],self.col_images[i+(self.interval-1)])
+                [dmy,centers]=self.detect_matrix_changes(dmy,final_countours,i,valid_cntrs,previous_centers,m)
+                txt = plt.text(10,10,str(i),horizontalalignment='center',verticalalignment='center')
+                plt.draw()
+                plt.imshow(dmy)
+                m = m + 1 
+                previous_centers = len(centers)
+                plt.pause(0.1)
+                plt.show()
+                txt.remove()
+                plt.draw()
+process = opencv_processor(col_images=read_frames('F:\\TFM_datasets\\extracted_frames\\000079'),interval=7)
+process.process_folder()
