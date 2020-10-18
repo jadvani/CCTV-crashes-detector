@@ -33,54 +33,6 @@ def read_frames(frames_path):
     return col_images
 
 
-
-def draw_centers(centers,dmy):
-    red = [255,0,0]
-    for center in centers:
-        dmy[center[1],center[0]]=red
-    return dmy
-
-
-# representamos distancias entre 2 elementos móviles en el transcurso de 2 fotogramas como una matriz. 
-
-#     1   2   3
-# 1   0   X   Y
-# 2   X   0   Z
-# 3   Y   Z   0 
-#
-# Teniendo 3 vehículos / centroides, la matriz representa 
-# las distancias entre cada uno de ellos. 
-# La diagonal es 0 siempre, y tiene un tamaño igual al de número de centroides.
-
-def euclidean_matrix(centers):
-    euclidean_distances = []
-    for i in range(len(centers)):
-        for j in range(len(centers)):
-            euclidean_distances.append(round(distance.euclidean(centers[i],centers[j]),2))
-    return euclidean_distances
-
-
-def is_sublist_in_list(pattern, list_coordinates):
-    inside = False
-    for elem in list_coordinates: 
-        if collections.Counter(elem) == collections.Counter(pattern) : 
-            inside=True
-          
-    return inside
-
-def get_max_min_tuples(tuples_list):
-    return [min(tuples_list, key = itemgetter(0))[0], max(tuples_list, key = itemgetter(0))[0],
-            min(tuples_list, key = itemgetter(1))[1],max(tuples_list, key = itemgetter(1))[1]]
-            
-
-        
-def set_up_figure():
-    fig, ax = plt.subplots()
-    fig.canvas.mpl_connect()
-    fig.canvas.mpl_connect()
-    return fig, ax
-
-                        #print(ED.reshape((len(centers),len(centers))))
 class opencv_processor():
     
     def __init__(self,col_images, interval = 2):
@@ -94,6 +46,47 @@ class opencv_processor():
         # leer una imagen como escala de grises
     def read_gray(self,image):
         return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+
+    def draw_centers(self, centers,dmy):
+        red = [255,0,0]
+        for center in centers:
+            dmy[center[1],center[0]]=red
+        return dmy
+
+
+    # representamos distancias entre 2 elementos móviles en el transcurso de 2 fotogramas como una matriz. 
+    
+    #     1   2   3
+    # 1   0   X   Y
+    # 2   X   0   Z
+    # 3   Y   Z   0 
+    #
+    # Teniendo 3 vehículos / centroides, la matriz representa 
+    # las distancias entre cada uno de ellos. 
+    # La diagonal es 0 siempre, y tiene un tamaño igual al de número de centroides.
+    
+    def euclidean_matrix(self, centers):
+        euclidean_distances = []
+        for i in range(len(centers)):
+            for j in range(len(centers)):
+                euclidean_distances.append(round(distance.euclidean(centers[i],centers[j]),2))
+        return euclidean_distances
+
+
+    def is_sublist_in_list(self,pattern, list_coordinates):
+        inside = False
+        for elem in list_coordinates: 
+            if collections.Counter(elem) == collections.Counter(pattern) : 
+                inside=True
+              
+        return inside
+
+    def get_max_min_tuples(self,tuples_list):
+        return [min(tuples_list, key = itemgetter(0))[0], max(tuples_list, key = itemgetter(0))[0],
+                min(tuples_list, key = itemgetter(1))[1],max(tuples_list, key = itemgetter(1))[1]]
+                
+
 
     def get_final_contours(self,contours):
         final_contours = []
@@ -129,11 +122,11 @@ class opencv_processor():
         for i in range(0,len(centers)):
             similar_centers = []
             for j in range(0, len(centers)):
-                if((self.ED[i,j]>0 and self.ED[i,j]<25) and not is_sublist_in_list(centers[i], similar_centers)):
+                if((self.ED[i,j]>0 and self.ED[i,j]<25) and not self.is_sublist_in_list(centers[i], similar_centers)):
                     similar_centers.append(centers[i])
             if(len(similar_centers)>0):
                 final.append(tuple(similar_centers[0]))
-                min_max=get_max_min_tuples(final)
+                min_max=self.get_max_min_tuples(final)
         return self.generate_rectangle(min_max,img) if len(similar_centers)>0 else img
 
     # dado un conjunto de siluetas verdes, devolvemos sus centros como lista. Esto será útil para estimar ROI (region of interest)
@@ -147,9 +140,9 @@ class opencv_processor():
     
     def detect_matrix_changes(self,dmy,final_countours,i,valid_cntrs):
         centers=self.get_countour_centers(final_countours)
-        dmy = draw_centers(centers, dmy)
+        dmy = self.draw_centers(centers, dmy)
         cv2.drawContours(dmy, valid_cntrs, -1, (127,200,0), 2)
-        self.ED = np.array(euclidean_matrix(centers))
+        self.ED = np.array(self.euclidean_matrix(centers))
         self.ED = self.ED.reshape((len(centers),len(centers)))
         print("Imágenes ",i,(i+(self.interval-1)),". La matriz ",self.matrix_counter," tiene ",len(centers)," siluetas")
         if(self.previous_centers>len(centers) and self.previous_centers>0 and len(centers)>0):
