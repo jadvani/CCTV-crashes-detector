@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import distance
 from operator import itemgetter 
+import collections
 
 def get_countour_centers(countour_array):
     centers = []
@@ -29,8 +30,8 @@ def read_frames(frames_path):
     for i in col_frames:
         try:
             img = cv2.imread(frames_path+"\\"+i)
-            height=img.shape[0] # si la imagen está vacía, al tratar de ver el tamaño salta un error
-            width=img.shape[1]
+            img.shape[0] # si la imagen está vacía, al tratar de ver el tamaño salta un error
+            img.shape[1]
             col_images.append(img)
         except: 
             print("image",i, "is corrupted.")
@@ -64,7 +65,6 @@ def euclidean_matrix(centers):
             euclidean_distances.append(round(distance.euclidean(centers[i],centers[j]),2))
     return euclidean_distances
 
-import collections
 
 def is_sublist_in_list(pattern, list_coordinates):
     inside = False
@@ -110,7 +110,7 @@ class opencv_processor():
         self.interval = interval
         
         # leer una imagen como escala de grises
-    def read_gray(image):
+    def read_gray(self,image):
         return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         
@@ -131,16 +131,13 @@ class opencv_processor():
         #detectamos contornos obtenidos en los dif frames
         contours, hierarchy = cv2.findContours(dilated.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
         
-        valid_cntrs = []
         final_countours = []
         
         for i,cntr in enumerate(contours):
             x,y,w,h = cv2.boundingRect(cntr)
-            valid_cntrs.append(cntr)
             final_countours.append([x,y,w,h])
         
-        len(valid_cntrs)
-        return img1.copy(), valid_cntrs, final_countours
+        return img1.copy(), contours, final_countours
     
     def detect_matrix_changes(self,dmy,final_countours,i,valid_cntrs,previous_centers,m):
         centers=get_countour_centers(final_countours)
@@ -156,23 +153,28 @@ class opencv_processor():
             print("posible accidente!")
             dmy=draw_squared_accident(centers, dmy, ED)
         return dmy,centers
+    
+    def show_processed_image(self,i,dmy):
+        txt = plt.text(10,10,str(i),horizontalalignment='center',verticalalignment='center')
+        plt.draw()
+        plt.imshow(dmy)
+        plt.pause(0.1)
+        plt.show()
+        txt.remove()
+        plt.draw()
         
     def process_folder(self):
-        m = 0  
+        matrix_counter = 0  
         previous_centers=0
         for i in range(0,len(self.col_images),self.interval):
             
-            if(i<len(self.col_images)-1):
+            if(i<len(self.col_images)-(self.interval-1)):
                 [dmy, valid_cntrs, final_countours]=self.diff_frames(self.col_images[i],self.col_images[i+(self.interval-1)])
-                [dmy,centers]=self.detect_matrix_changes(dmy,final_countours,i,valid_cntrs,previous_centers,m)
-                txt = plt.text(10,10,str(i),horizontalalignment='center',verticalalignment='center')
-                plt.draw()
-                plt.imshow(dmy)
-                m = m + 1 
+                [dmy,centers]=self.detect_matrix_changes(dmy,final_countours,i,valid_cntrs,previous_centers,matrix_counter)
+                self.show_processed_image(i,dmy)
+                matrix_counter = matrix_counter + 1 
                 previous_centers = len(centers)
-                plt.pause(0.1)
-                plt.show()
-                txt.remove()
-                plt.draw()
-process = opencv_processor(col_images=read_frames('F:\\TFM_datasets\\extracted_frames\\000079'),interval=7)
+                
+                
+process = opencv_processor(col_images=read_frames('F:\\TFM_datasets\\extracted_frames\\000079'),interval=2)
 process.process_folder()
