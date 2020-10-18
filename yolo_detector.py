@@ -122,8 +122,14 @@ img,boxes, ids=yolo.process_image("F:\\TFM_datasets\\extracted_frames\\000101\\7
 
 yolo.get_union_areas(boxes)
 potential_crashes=yolo.potential_crashes
-plt.imshow(img)
+
+for coord in yolo.coord_unions:
+    res=cv2.rectangle(yolo.original_image, (coord[0], coord[1]), (coord[0]+coord[2], coord[1]+coord[3]), (255, 0, 0), 2)
+    
+plt.imshow(res)
 plt.pause(0.1)
+
+
 
 
 
