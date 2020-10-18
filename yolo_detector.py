@@ -5,7 +5,6 @@ import cv2
 import os
 import matplotlib.pyplot as plt
 # import geopandas as gpd
-from shapely.geometry import box
 
 
 class yolo_detector():
@@ -15,24 +14,26 @@ class yolo_detector():
         self.coco_folder_path = coco_folderpath
         self.confidence=confidence
         self.threshold = threshold
-        self.COLORS=[]
-        self.LABELS=[]
         labelsPath = os.path.sep.join([coco_folderpath, "coco.names"])
         self.LABELS = open(labelsPath).read().strip().split("\n")
         # colores para representar clases
         np.random.seed(42)
         self.COLORS = np.random.randint(0, 255, size=(len(self.LABELS), 3),dtype="uint8")
-        # derive the paths to the YOLO weights and model configuration
+        # cargamos el modelo y los pesos de YOLO
         weightsPath = os.path.sep.join([coco_folderpath, "yolov3.weights"])
         configPath = os.path.sep.join([coco_folderpath, "yolov3.cfg"])
-        # load our YOLO object detector trained on COCO dataset (80 classes)
-        print("[INFO] loading YOLO from disk...")
+        # cargamos el detector de YOLO sobre el dataset COCO (80 clases)
         self.net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
-    def print_folderpath(self):
+        self.original_image = []
+        self.coord_unions = []
+        self.potential_crashes = []
+        
+    def print_coco_names_folderpath(self):
         print(self.coco_folder_path)
+        
     def process_image(self, image_path):
         # load our input image and grab its spatial dimensions
-        image = cv2.imread(image_path)
+        self.original_image, image = (cv2.imread(image_path), cv2.imread(image_path))
         (H, W) = image.shape[:2]
         # determine only the *output* layer names that we need from YOLO
         ln = self.net.getLayerNames()
@@ -51,9 +52,7 @@ class yolo_detector():
 
         # initialize our lists of detected bounding boxes, confidences, and
         # class IDs, respectively
-        boxes = []
-        confidences = []
-        classIDs = []
+        boxes, confidences, classIDs = ([],[],[])
         dict_result = dict()
         for output in layerOutputs:
             for detection in output:
@@ -81,56 +80,50 @@ class yolo_detector():
 			0.5, color, 2)
         return image, boxes, classIDs
                 
-                
+    def union(self, a,b):
+      x = min(a[0], b[0])
+      y = min(a[1], b[1])
+      w = max(a[0]+a[2], b[0]+b[2]) - x
+      h = max(a[1]+a[3], b[1]+b[3]) - y
+      return (x, y, w, h)
+    
+    def return_xywh(self, coordinates):
+        return  coordinates[0],coordinates[1],coordinates[2]-coordinates[0],coordinates[3]-coordinates[1]       
+     
+    def intersection(self, a,b):
+      x = max(a[0], b[0])
+      y = max(a[1], b[1])
+      w = min(a[0]+a[2], b[0]+b[2]) - x
+      h = min(a[1]+a[3], b[1]+b[3]) - y
+      if w<0 or h<0: return () # or (0,0,0,0) ?
+      return (x, y, w, h)
+    
+    # comprobamos si las tuplas, o cualquier otra estructura de datos, está vacía o no.
+    def is_empty(self, any_structure):
+        return False if any_structure else True
+    
+    def get_union_areas(self, boxes):
+        for i in range(0, len(boxes)-1):
+            for j in range(0, len(boxes)-1):
+                if(i!=j):
+                    intersect = self.intersection(boxes[i],boxes[j])
+                    if(not(self.is_empty(intersect))):
+                        union_from_intersection = self.union(boxes[i],boxes[j])
+                        if(union_from_intersection not in self.coord_unions):
+                            self.coord_unions.append(union_from_intersection)
+                            crop = self.original_image[union_from_intersection[1]:union_from_intersection[1]+union_from_intersection[3], union_from_intersection[0]:union_from_intersection[0]+union_from_intersection[2]]
+                            self.potential_crashes.append(crop)
+                                        
 
 
-obj = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
-obj.print_folderpath()
-img,boxes, ids=obj.process_image("F:\\TFM_datasets\\extracted_frames\\000101\\70.jpg")
-# plt.imshow(img)
-# plt.pause(0.1)
-rectangles= []
-intersections = []
-for sub_box in boxes:
-    rectangles.append(box(abs(int(sub_box[0])),abs(int(sub_box[1])),abs(int(sub_box[2])),abs(int(sub_box[3]))))
+yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
+yolo.print_coco_names_folderpath()
+img,boxes, ids=yolo.process_image("F:\\TFM_datasets\\extracted_frames\\000101\\70.jpg")
 
-def union(a,b):
-  x = min(a[0], b[0])
-  y = min(a[1], b[1])
-  w = max(a[0]+a[2], b[0]+b[2]) - x
-  h = max(a[1]+a[3], b[1]+b[3]) - y
-  return (x, y, w, h)
-
-def return_xywh(coordinates):
-    return  coordinates[0],coordinates[1],coordinates[2]-coordinates[0],coordinates[3]-coordinates[1]        
-
-#TODO view intersections!
-i = len(rectangles)-1
-
-# for rectangle in rectangles:
-#     print(rectangle.exterior.coords.xy)
-# while (i>0):
-#     rectangles_copy = rectangles.copy()
-#     j = len(rectangles_copy)-1
-#     while(j>0):
-#         if(i!=j):
-#             intersection = rectangles[i].intersection(rectangles_copy[j])
-#             # print("1: ",rectangles[i].bounds)
-#             # print("2: ",rectangles_copy[j].bounds)
-#             if(not(intersection.is_empty)):
-#                 # intersections.append(union(return_xywh(rectangles[i].bounds),return_xywh(rectangles_copy[j].bounds)))
-#                 intersections.append(intersection)
-#         del rectangles_copy[j]
-#         j = j-1
-#     del rectangles[i]
-#     i = i-1
-# print(len(intersections))
-# for intersection in intersections:
-#     gpd.GeoSeries(intersection).plot()
-#     # cv2.rectangle(img, (int(intersection[0]), int(intersection[2])), (int(intersection[1]+intersection[0]), int(intersection[3]+intersection[2])), (255, 0, 0), 2)
-       
-# plt.imshow(img)
-# plt.pause(0.1)    
+yolo.get_union_areas(boxes)
+potential_crashes=yolo.potential_crashes
+plt.imshow(img)
+plt.pause(0.1)
 
 
 
