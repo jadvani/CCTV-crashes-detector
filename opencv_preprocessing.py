@@ -13,36 +13,43 @@ import matplotlib.pyplot as plt
 from scipy.spatial import distance
 from operator import itemgetter 
 import collections
-
-
-#leer frames de una carpeta
-def read_frames(frames_path):
-    col_frames = [f for f in os.listdir(frames_path) if (f.endswith('.jpg') or f.endswith('.png'))] #quitar ficheros innecesarios
-    col_frames.sort(key=lambda f:int(re.sub('\D', '', f)))
-    col_images=[]
-    
-    for i in col_frames:
-        try:
-            img = cv2.imread(frames_path+"\\"+i)
-            img.shape[0] # si la imagen está vacía, al tratar de ver el tamaño salta un error
-            img.shape[1]
-            col_images.append(img)
-        except: 
-            print("image",i, "is corrupted.")
-        
-    return col_images
+from dilation import Dilation
 
 
 class opencv_processor():
-    
-    def __init__(self,col_images, interval = 2):
-        #read_frames('F:\\TFM_datasets\\extracted_frames\\000079')
-        self.col_images = col_images
-        self.interval = interval
-        self.ED = []
-        self.matrix_counter = 0  
-        self.previous_centers = 0
         
+    # interval determina el tamaño de ventana entre frames. 
+    #Por defecto, tomamos frames consecutivos, pero si hay poco rate en el vídeo, 
+    # interesa cogerlo cada 3 o cada 4. Cuanto más grande, el procesado es más rápido, pero nos arriesgamos a detectar menos cambios.
+    
+    # threshold es el umbral al aplicar cv2.threshold. 
+    # Para imágenes nocturnas, un valor de 12-15 es bueno. Para diurnas, 30-50. 
+    # Cuanto más alto, menos siluetas se detectan, y la matriz euclídea será más pequeña.
+    
+    # dilation: tipo de dilatación que se aplica en contornos. NORMAL = 3, HIGH = 5
+    def __init__(self,frames_path,  dilation=Dilation.NORMAL, interval = 2, threshold = 30):
+        self.frames_path = frames_path
+        self.interval = interval
+        self.threshold = threshold
+        self.col_images, self.ED, self.possible_crash_sections = ([],[],[])
+        self.matrix_counter, self.previous_centers = (0,0)
+        self.dilation = dilation
+        self.interval_end=[]
+        
+           #leer frames de una carpeta
+    def read_frames(self, frames_path):
+        frames = [f for f in os.listdir(frames_path) if (f.endswith('.jpg') or f.endswith('.png'))] #quitar ficheros innecesarios
+        frames.sort(key=lambda f:int(re.sub('\D', '', f)))
+        for frame in frames:
+            try:
+                img = cv2.imread(frames_path+"\\"+frame)
+                img.shape[0] # si la imagen está vacía, al tratar de ver el tamaño salta un error
+                img.shape[1]
+                self.col_images.append(img)
+            except: 
+                print("image",frame, "is corrupted.")
+ 
+
         # leer una imagen como escala de grises
     def read_gray(self,image):
         return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -87,7 +94,6 @@ class opencv_processor():
                 min(tuples_list, key = itemgetter(1))[1],max(tuples_list, key = itemgetter(1))[1]]
                 
 
-
     def get_final_contours(self,contours):
         final_contours = []
         
@@ -102,7 +108,7 @@ class opencv_processor():
         grayB = self.read_gray(img2)
         #diferencia entre imagenes 
         diff_image = cv2.absdiff(grayB, grayA)
-        ret, thresh = cv2.threshold(diff_image, 30, 255, cv2.THRESH_BINARY)
+        ret, thresh = cv2.threshold(diff_image, self.threshold, 255, cv2.THRESH_BINARY) # las cosas que no han cambiado se ven en negro, y las que sí en blanco. Umbral threshold
         # dilatacion
         kernel = np.ones((3,3),np.uint8)
         dilated = cv2.dilate(thresh,kernel,iterations = 1)
@@ -111,6 +117,7 @@ class opencv_processor():
         return img1.copy(), contours, self.get_final_contours(contours)
     
     def generate_rectangle(self,min_max,img):
+        self.possible_crash_sections.append(self.interval_end[min_max[2]:min_max[3],min_max[0]:min_max[1]])
         return cv2.rectangle(img, (min_max[0], min_max[2]), (min_max[1], min_max[3]), (255, 0, 0), 2)
         
     # teniendo los centros de los contornos verdes, estimamos el área a recortar
@@ -150,7 +157,6 @@ class opencv_processor():
             dmy=self.draw_squared_accident(centers, dmy)
         return dmy,centers
     
-    
     def show_processed_image(self,i,dmy):
         txt = plt.text(10,10,str(i),horizontalalignment='center',verticalalignment='center')
         plt.draw()
@@ -161,16 +167,18 @@ class opencv_processor():
         plt.draw()
         
     def process_folder(self):
-        
-        for i in range(0,len(self.col_images),self.interval):
-            
-            if(i<len(self.col_images)-(self.interval-1)):
-                [dmy, valid_cntrs, final_countours]=self.diff_frames(self.col_images[i],self.col_images[i+(self.interval-1)])
-                [dmy,centers]=self.detect_matrix_changes(dmy,final_countours,i,valid_cntrs)
-                self.show_processed_image(i,dmy)
-                self.matrix_counter = self.matrix_counter + 1 
-                self.previous_centers = len(centers)
+        self.read_frames(self.frames_path) # leemos frames quitando imágenes corruptas
+        for i in range(0,len(self.col_images),self.interval): # tomando las imágenes con saltos iguales al intervalo dado como parámetro 
+            if(i<len(self.col_images)-(self.interval-1)): # si todavía quedan parejas de imágenes por procesar
+                self.interval_end=self.col_images[i+(self.interval-1)]
+                [dmy, valid_cntrs, final_countours]=self.diff_frames(self.col_images[i],self.interval_end) # diferencias entre fotogramas
+                [dmy,centers]=self.detect_matrix_changes(dmy,final_countours,i,valid_cntrs) # extraemos matriz euclídea y buscamos posible área de accidente
+                self.show_processed_image(i,dmy) # mostramos el resultado del procesado anterior. TODO: cortar imagen
+                self.matrix_counter = self.matrix_counter + 1 # número de veces que calculamos la matriz euclídea. Variable meramente informativa.
+                self.previous_centers = len(centers) # si hay cambios muy bruscos de un intervalo a otro, lo vamos comprobando con los centroides detectados.
                 
-                
-process = opencv_processor(col_images=read_frames('F:\\TFM_datasets\\extracted_frames\\000079'),interval=3)
+             
+process = opencv_processor('F:\\TFM_datasets\\extracted_frames\\000079',interval=2, threshold=30, dilation=Dilation.HIGH)
 process.process_folder()
+
+crashes = process.possible_crash_sections
