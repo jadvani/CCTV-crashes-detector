@@ -14,7 +14,7 @@ ydata = np.sin(xdata)
 
 fig, ax = plt.subplots()
 line, = ax.plot(xdata, ydata)
-img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\000091\\14.jpg")
+img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\000130\\127.jpg")
 
 
 def line_select_callback(eclick, erelease):
@@ -31,5 +31,5 @@ rs = RectangleSelector(ax, line_select_callback,
                        minspanx=5, minspany=5, spancoords='pixels', 
                        interactive=True)
 
-plt.imshow(img)
+plt.imshow(img[...,::-1])
 plt.pause(0.1)
