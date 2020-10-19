@@ -118,8 +118,8 @@ class yolo_detector():
 
 yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
 yolo.print_coco_names_folderpath()
-img,boxes, ids=yolo.process_image("F:\\TFM_datasets\\extracted_frames\\000101\\70.jpg")
-
+#img,boxes, ids=yolo.process_image("F:\\TFM_datasets\\extracted_frames\\000101\\70.jpg")
+img,boxes, ids=yolo.process_image("preview.jpg")
 yolo.get_union_areas(boxes)
 potential_crashes=yolo.potential_crashes
 
