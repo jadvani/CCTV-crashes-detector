@@ -178,7 +178,4 @@ class opencv_processor():
                 self.previous_centers = len(centers) # si hay cambios muy bruscos de un intervalo a otro, lo vamos comprobando con los centroides detectados.
                 
              
-process = opencv_processor('F:\\TFM_datasets\\extracted_frames\\000079',interval=2, threshold=30, dilation=Dilation.HIGH)
-process.process_folder()
 
-crashes = process.possible_crash_sections

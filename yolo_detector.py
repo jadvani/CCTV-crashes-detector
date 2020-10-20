@@ -31,9 +31,9 @@ class yolo_detector():
     def print_coco_names_folderpath(self):
         print(self.coco_folder_path)
         
-    def process_image(self, image_path):
+    def process_image(self, image):
         # load our input image and grab its spatial dimensions
-        self.original_image, image = (cv2.imread(image_path), cv2.imread(image_path))
+        self.original_image = image
         (H, W) = image.shape[:2]
         # determine only the *output* layer names that we need from YOLO
         ln = self.net.getLayerNames()
@@ -116,18 +116,6 @@ class yolo_detector():
                                         
 
 
-yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
-yolo.print_coco_names_folderpath()
-#img,boxes, ids=yolo.process_image("F:\\TFM_datasets\\extracted_frames\\000101\\70.jpg")
-img,boxes, ids=yolo.process_image("preview.jpg")
-yolo.get_union_areas(boxes)
-potential_crashes=yolo.potential_crashes
-
-for coord in yolo.coord_unions:
-    res=cv2.rectangle(yolo.original_image, (coord[0], coord[1]), (coord[0]+coord[2], coord[1]+coord[3]), (255, 0, 0), 2)
-    
-plt.imshow(res)
-plt.pause(0.1)
 
 
 
