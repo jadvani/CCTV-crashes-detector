@@ -3,7 +3,6 @@ import numpy as np
 import time
 import cv2
 import os
-import matplotlib.pyplot as plt
 # import geopandas as gpd
 
 
@@ -24,9 +23,8 @@ class yolo_detector():
         configPath = os.path.sep.join([coco_folderpath, "yolov3.cfg"])
         # cargamos el detector de YOLO sobre el dataset COCO (80 clases)
         self.net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
-        self.original_image = []
-        self.coord_unions = []
-        self.potential_crashes = []
+        self.original_image, self.coord_unions, self.potential_crashes = ([],[],[])
+
         
     def print_coco_names_folderpath(self):
         print(self.coco_folder_path)

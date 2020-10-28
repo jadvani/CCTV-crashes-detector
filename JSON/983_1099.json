@@ -1,0 +1,818 @@
+[
+    {
+        "folder": "000983",
+        "start": 91,
+        "start_coords": [199,99,56,54],
+        "end": 120,
+        "end_coords": [238,176,82,110]
+    },
+    {
+        "folder": "000984",
+        "start": 225,
+        "start_coords": [183,119,45,30],
+        "end": 265,
+        "end_coords": [18,149,69,63]
+    },
+    {
+        "folder": "000985",
+        "start": 147,
+        "start_coords": [37,136,104,75],
+        "end": 178,
+        "end_coords": [21,153,91,76]
+    },
+    {
+        "folder": "000986",
+        "start": 162,
+        "start_coords": [236,124,60,36],
+        "end": 225,
+        "end_coords": [287,96,76,42]
+    },
+    {
+        "folder": "000987",
+        "start": 148,
+        "start_coords": [186,117,44,27],
+        "end": 178,
+        "end_coords": [129,117,101,25]
+    },
+    {
+        "folder": "000988",
+        "start": 110,
+        "start_coords": [316,237,110,100],
+        "end": 200,
+        "end_coords": [277,230,111,87]
+    },
+    {
+        "folder": "000989",
+        "start": 140,
+        "start_coords": [98,104,61,31],
+        "end": 215,
+        "end_coords": [46,100,77,31]
+    },
+    {
+        "folder": "000990",
+        "start": 210,
+        "start_coords": [263,108,63,53],
+        "end": 280,
+        "end_coords": [246,91,54,46]
+    },
+    {
+        "folder": "000991",
+        "multiple": true
+    },
+    {
+        "folder": "000992",
+        "start": 207,
+        "start_coords": [101,109,34,34],
+        "end": 250,
+        "end_coords": [77,117,56,48]
+    },
+    {
+        "folder": "000993",
+        "start": 164,
+        "start_coords": [225,192,66,66],
+        "end": 196,
+        "end_coords": [250,213,73,73]
+    },
+    {
+        "folder": "000994",
+        "start": 292,
+        "start_coords": [115,186,96,88],
+        "end": 320,
+        "end_coords": [74,191,149,79]
+    },
+    {
+        "folder": "000995",
+        "start": 194,
+        "start_coords": [141,52,56,41],
+        "end": 250,
+        "end_coords": [18,71,145,43]
+    },
+    {
+        "folder": "000996",
+        "start": 201,
+        "start_coords": [172,152,76,49],
+        "end": 230,
+        "end_coords": [128,161,95,54]
+    },
+    {
+        "folder": "000997",
+        "start": 203,
+        "start_coords": [19,187,67,61],
+        "end": 220,
+        "end_coords": [18,195,126,141]
+    },
+    {
+        "folder": "000998",
+        "start": 116,
+        "start_coords": [958,333,187,95],
+        "end": 182,
+        "end_coords": [1062,351,173,82]
+    },
+    {
+        "folder": "000999",
+        "start": 199,
+        "start_coords": [384,136,608,153],
+        "end": 245,
+        "end_coords": [477,153,539,124]
+    },
+    {
+        "folder": "001000",
+        "start": 170,
+        "start_coords": [300,307,233,114],
+        "end": 212,
+        "end_coords": [314,329,326,124]
+    },
+    {
+        "folder": "001001",
+        "start": 1057,
+        "start_coords": [191,61,117,35],
+        "end": 1060,
+        "end_coords": [224,53,100,38]
+    },
+    {
+        "folder": "001002",
+        "start": 343,
+        "start_coords": [18,3,155,76],
+        "end": 353,
+        "end_coords": [60,0,130,94]
+    },
+    {
+        "folder": "001003",
+        "start": 450,
+        "start_coords": [540,322,208,66],
+        "end": 492,
+        "end_coords": [459,313,158,56]
+    },
+    {
+        "folder": "001004",
+        "start": 112,
+        "start_coords": [0,200,91,59],
+        "end": 125,
+        "end_coords": [87,179,113,56]
+    },
+    {
+        "folder": "001005",
+        "start": 230,
+        "start_coords": [215,52,98,39],
+        "end": 276,
+        "end_coords": [179,52,77,38]
+    },
+    {
+        "folder": "001006",
+        "start": 120,
+        "start_coords": [198,67,68,24],
+        "end": 214,
+        "end_coords": [157,53,53,37]
+    },
+    {
+        "folder": "001007",
+        "start": 485,
+        "start_coords": [52,106,84,52],
+        "end": 515,
+        "end_coords": [42,110,92,54]
+    },
+    {
+        "folder": "001008",
+        "start": 120,
+        "start_coords": [39,82,39,32],
+        "end": 240,
+        "end_coords": [53,91,51,38]
+    },
+    {
+        "folder": "001009",
+        "start": 286,
+        "start_coords": [239,154,89,73],
+        "end": 370,
+        "end_coords": [122,177,282,119]
+    },
+    {
+        "folder": "001010",
+        "start": 67,
+        "start_coords": [650,177,155,133],
+        "end": 80,
+        "end_coords": [623,197,152,132]
+    },
+    {
+        "folder": "001011",
+        "start": 34,
+        "start_coords": [758,342,181,192],
+        "end": 48,
+        "end_coords": [870,439,315,191]
+    },
+    {
+        "folder": "001012",
+        "start": 12,
+        "start_coords": [693,132,444,446],
+        "end": 44,
+        "end_coords": [678,182,601,530]
+    },
+    {
+        "folder": "001013",
+        "start": 14,
+        "start_coords": [777,238,208,164],
+        "end": 40,
+        "end_coords": [669,321,220,123]
+    },
+    {
+        "folder": "001014",
+        "start": 20,
+        "start_coords": [199,312,498,270],
+        "end": 40,
+        "end_coords": [227,243,380,188]
+    },
+    {
+        "folder": "001015",
+        "start": 2,
+        "start_coords": [452,261,461,305],
+        "end": 80,
+        "end_coords": [0,231,290,174]
+    },
+    {
+        "folder": "001016",
+        "start": 40,
+        "start_coords": [745,123,533,229],
+        "end": 80,
+        "end_coords": [787,142,490,221]
+    },
+    {
+        "folder": "001017",
+        "start": 18,
+        "start_coords": [797,279,334,171],
+        "end": 40,
+        "end_coords": [635,300,302,244]
+    },
+    {
+        "folder": "001018",
+        "start": 24,
+        "start_coords": [576,294,292,196],
+        "end": 48,
+        "end_coords": [663,340,575,281]
+    },
+    {
+        "folder": "001019",
+        "start": 46,
+        "start_coords": [592,199,500,183],
+        "end": 94,
+        "end_coords": [671,242,606,151]
+    },
+    {
+        "folder": "001020",
+        "start": 226,
+        "start_coords": [435,400,123,152],
+        "end": 243,
+        "end_coords": [300,427,200,104]
+    },
+    {
+        "folder": "001021",
+        "start": 120,
+        "start_coords": [764,266,194,199],
+        "end": 180,
+        "end_coords": [749,314,230,190]
+    },
+    {
+        "folder": "001022",
+        "start": 48,
+        "start_coords": [325,264,329,218],
+        "end": 100,
+        "end_coords": [280,339,521,352]
+    },
+    {
+        "folder": "001023",
+        "start": 68,
+        "start_coords": [717,130,94,102],
+        "end": 150,
+        "end_coords": [719,266,190,106]
+    },
+    {
+        "folder": "001024",
+        "start": 184,
+        "start_coords": [574,269,294,241],
+        "end": 224,
+        "end_coords": [602,347,296,275]
+    },
+    {
+        "folder": "001025",
+        "start": 66,
+        "start_coords": [127,94,341,103],
+        "end": 130,
+        "end_coords": [12,121,198,98]
+    },
+    {
+        "folder": "001026",
+        "start": 44,
+        "start_coords": [35,137,133,71],
+        "end": 68,
+        "end_coords": [50,146,134,85]
+    },
+    {
+        "folder": "001027",
+        "start": 120,
+        "start_coords": [220,35,35,51],
+        "end": 235,
+        "end_coords": [206,66,54,45]
+    },
+    {
+        "folder": "001028",
+        "start": 16,
+        "start_coords": [18,203,87,144],
+        "end": 62,
+        "end_coords": [79,177,108,99]
+    },
+    {
+        "folder": "001029",
+        "start": 32,
+        "start_coords": [136,146,224,110],
+        "end": 74,
+        "end_coords": [122,140,218,112]
+    },
+    {
+        "folder": "001030",
+        "start": 0,
+        "start_coords": [197,69,278,280],
+        "end": 125,
+        "end_coords": [110,46,274,181]
+    },
+    {
+        "folder": "001031",
+        "start": 30,
+        "start_coords": [2,115,138,244],
+        "end": 122,
+        "end_coords": [46,92,127,100]
+    },
+    {
+        "folder": "001032",
+        "start": 96,
+        "start_coords": [118,89,60,64],
+        "end": 188,
+        "end_coords": [122,114,66,91]
+    },
+    {
+        "folder": "001033",
+        "start": 96,
+        "start_coords": [74,74,47,67],
+        "end": 216,
+        "end_coords": [254,165,224,167]
+    },
+    {
+        "folder": "001034",
+        "start": 26,
+        "start_coords": [305,25,135,154],
+        "end": 58,
+        "end_coords": [209,55,229,145]
+    },
+    {
+        "folder": "001035",
+        "start": 46,
+        "start_coords": [135,47,342,308],
+        "end": 300,
+        "end_coords": [91,50,135,123]
+    },
+    {
+        "folder": "001036",
+        "start": 122,
+        "start_coords": [126,67,66,83],
+        "end": 160,
+        "end_coords": [110,84,83,78]
+    },
+    {
+        "folder": "001037",
+        "start": 124,
+        "start_coords": [125,17,80,97],
+        "end": 155,
+        "end_coords": [112,55,90,80]
+    },
+    {
+        "folder": "001038",
+        "start": 40,
+        "start_coords": [35,90,161,104],
+        "end": 78,
+        "end_coords": [16,105,155,153]
+    },
+    {
+        "folder": "001039",
+        "start": 170,
+        "start_coords": [3,120,265,162],
+        "end": 234,
+        "end_coords": [171,132,206,133]
+    },
+    {
+        "folder": "001040",
+        "start": 16,
+        "start_coords": [273,91,92,81],
+        "end": 82,
+        "end_coords": [183,113,115,64]
+    },
+    {
+        "folder": "001041",
+        "start": 268,
+        "start_coords": [235,57,110,76],
+        "end": 334,
+        "end_coords": [266,151,133,208]
+    },
+    {
+        "folder": "001042",
+        "start": 100,
+        "start_coords": [171,21,182,155],
+        "end": 212,
+        "end_coords": [140,26,171,184]
+    },
+    {
+        "folder": "001043",
+        "start": 90,
+        "start_coords": [196,53,114,93],
+        "end": 160,
+        "end_coords": [248,79,176,76]
+    },
+    {
+        "folder": "001044",
+        "start": 20,
+        "start_coords": [90,221,129,133],
+        "end": 80,
+        "end_coords": [109,161,110,107]
+    },
+    {
+        "folder": "001045",
+        "start": 150,
+        "start_coords": [0,191,292,166],
+        "end": 220,
+        "end_coords": [85,144,240,164]
+    },
+    {
+        "folder": "001046",
+        "start": 0,
+        "start_coords": [65,240,84,57],
+        "end": 32,
+        "end_coords": [116,225,117,80]
+    },
+    {
+        "folder": "001047",
+        "start": 30,
+        "start_coords": [64,2,81,159],
+        "end": 135,
+        "end_coords": [84,0,72,80]
+    },
+    {
+        "folder": "001048",
+        "start": 150,
+        "start_coords": [107,141,66,114],
+        "end": 240,
+        "end_coords": [50,131,115,133]
+    },
+    {
+        "folder": "001049",
+        "start": 80,
+        "start_coords": [32,221,149,137],
+        "end": 120,
+        "end_coords": [44,128,192,202]
+    },
+    {
+        "folder": "001050",
+        "start": 50,
+        "start_coords": [99,86,116,66],
+        "end": 100,
+        "end_coords": [207,117,107,69]
+    },
+    {
+        "folder": "001051",
+        "start": 156,
+        "start_coords": [195,67,97,125],
+        "end": 256,
+        "end_coords": [139,101,112,144]
+    },
+    {
+        "folder": "001052",
+        "start": 35,
+        "start_coords": [200,87,111,102],
+        "end": 100,
+        "end_coords": [225,88,116,150]
+    },
+    {
+        "folder": "001053",
+        "start": 26,
+        "start_coords": [218,16,48,58],
+        "end": 77,
+        "end_coords": [281,65,83,55]
+    },
+    {
+        "folder": "001054",
+        "start": 22,
+        "start_coords": [0,96,371,248],
+        "end": 62,
+        "end_coords": [1,106,335,240]
+    },
+    {
+        "folder": "001055",
+        "start": 30,
+        "start_coords": [247,65,64,60],
+        "end": 100,
+        "end_coords": [245,86,67,50]
+    },
+    {
+        "folder": "001056",
+        "start": 55,
+        "start_coords": [21,148,234,109],
+        "end": 160,
+        "end_coords": [214,142,132,104]
+    },
+    {
+        "folder": "001057",
+        "start": 85,
+        "start_coords": [339,57,139,98],
+        "end": 150,
+        "end_coords": [117,68,290,197]
+    },
+    {
+        "folder": "001058",
+        "start": 166,
+        "start_coords": [540,226,542,256],
+        "end": 230,
+        "end_coords": [850,286,426,239]
+    },
+    {
+        "folder": "001059",
+        "start": 1490,
+        "start_coords": [147,191,133,128],
+        "end": 1740,
+        "end_coords": [126,85,54,19]
+    },
+    {
+        "folder": "001060",
+        "start": 28,
+        "start_coords": [1,332,283,178],
+        "end": 128,
+        "end_coords": [869,296,350,191]
+    },
+    {
+        "folder": "001061",
+        "start":77,
+        "start_coords": [359,180,872,229],
+        "end": 150,
+        "end_coords": [45,229,522,218]
+    },
+    {
+        "folder": "001062",
+        "start": 45,
+        "start_coords": [115,246,315,187],
+        "end": 160,
+        "end_coords": [146,282,731,313]
+    },
+    {
+        "folder": "001063",
+        "start": 116,
+        "start_coords": [598,80,68,107],
+        "end": 230,
+        "end_coords": [582,144,102,79]
+    },
+    {
+        "folder": "001064",
+        "start": 20,
+        "start_coords": [560,172,710,458],
+        "end": 168,
+        "end_coords": [344,137,509,262]
+    },
+    {
+        "folder": "001065",
+        "start": 30,
+        "start_coords": [4,269,375,396],
+        "end": 122,
+        "end_coords": [133,167,405,212]
+    },
+    {
+        "folder": "001066",
+        "start": 96,
+        "start_coords": [317,159,97,169],
+        "end": 118,
+        "end_coords": [322,215,83,100]
+    },
+    {
+        "folder": "001067",
+        "start": 110,
+        "start_coords": [187,164,123,123],
+        "end": 190,
+        "end_coords": [663,306,284,186]
+    },
+    {
+        "folder": "001068",
+        "start": 46,
+        "start_coords": [342,122,926,543],
+        "end": 300,
+        "end_coords": [255,140,343,206]
+    },
+    {
+        "folder": "001069",
+        "start": 100,
+        "start_coords": [341,133,207,177],
+        "end": 148,
+        "end_coords": [302,184,214,145]
+    },
+    {
+        "folder": "001070",
+        "start": 106,
+        "start_coords": [343,42,178,214],
+        "end": 168,
+        "end_coords": [309,61,250,287]
+    },
+    {
+        "folder": "001071",
+        "start": 27,
+        "start_coords": [80,204,457,185],
+        "end": 100,
+        "end_coords": [28,209,428,391]
+    },
+    {
+        "folder": "001072",
+        "start": 170,
+        "start_coords": [20,258,709,281],
+        "end": 228,
+        "end_coords": [444,260,574,271]
+    },
+    {
+        "folder": "001073",
+        "start": 15,
+        "start_coords": [924,291,245,159],
+        "end": 74,
+        "end_coords": [362,285,304,150]
+    },
+    {
+        "folder": "001074",
+        "start": 65,
+        "start_coords": [660,163,216,165],
+        "end": 116,
+        "end_coords": [715,285,323,382]
+    },
+    {
+        "folder": "001075",
+        "start": 102,
+        "start_coords": [481,81,432,274],
+        "end": 178,
+        "end_coords": [382,56,433,349]
+    },
+    {
+        "folder": "001076",
+        "start": 66,
+        "start_coords": [514,133,273,168],
+        "end": 130,
+        "end_coords": [624,179,500,152]
+    },
+    {
+        "folder": "001077",
+        "start": 22,
+        "start_coords": [265,440,284,222],
+        "end": 60,
+        "end_coords": [292,330,248,197]
+    },
+    {
+        "folder": "001078",
+        "start": 155,
+        "start_coords": [3,368,760,299],
+        "end": 245,
+        "end_coords": [362,241,489,296]
+    },
+    {
+        "folder": "001079",
+        "start": 40,
+        "start_coords": [194,45,188,234],
+        "end": 122,
+        "end_coords": [228,43,184,138]
+    },
+    {
+        "folder": "001080",
+        "start": 105,
+        "start_coords": [288,281,198,214],
+        "end": 210,
+        "end_coords": [137,276,311,241]
+    },
+    {
+        "folder": "001081",
+        "start": 54,
+        "start_coords": [123,366,383,306],
+        "end": 90,
+        "end_coords": [147,270,461,354]
+    },
+    {
+        "folder": "001082",
+        "start": 70,
+        "start_coords": [386,204,216,103],
+        "end": 116,
+        "end_coords": [558,248,290,133]
+    },
+    {
+        "folder": "001083",
+        "start": 114,
+        "start_coords": [520,146,238,246],
+        "end": 220,
+        "end_coords": [432,207,228,273]
+    },
+    {
+        "folder": "001084",
+        "start": 40,
+        "start_coords": [578,194,262,196],
+        "end": 100,
+        "end_coords": [613,198,288,279]
+    },
+    {
+        "folder": "001085",
+        "start": 26,
+        "start_coords": [577,67,128,113],
+        "end": 75,
+        "end_coords": [706,142,256,132]
+    },
+    {
+        "folder": "001086",
+        "start": 28,
+        "start_coords": [5,202,933,435],
+        "end": 130,
+        "end_coords": [3,216,897,435]
+    },
+    {
+        "folder": "001087",
+        "start": 34,
+        "start_coords": [682,163,124,93],
+        "end": 94,
+        "end_coords": [672,184,187,97]
+    },
+    {
+        "folder": "001088",
+        "start": 76,
+        "start_coords": [141,321,508,146],
+        "end": 188,
+        "end_coords": [567,294,347,167]
+    },
+    {
+        "folder": "001089",
+        "start": 0,
+        "start_coords": [639,187,191,124],
+        "end": 44,
+        "end_coords": [589,202,191,183]
+    },
+    {
+        "folder": "001090",
+        "start": 55,
+        "start_coords": [743,319,194,247],
+        "end": 74,
+        "end_coords": [902,461,374,258]
+    },
+    {
+        "folder": "001091",
+        "start": 0,
+        "start_coords": [1052,86,227,103],
+        "end": 24,
+        "end_coords": [1030,115,245,175]
+    },
+    {
+        "folder": "001092",
+        "start": 0,
+        "start_coords": [801,473,477,242],
+        "end": 52,
+        "end_coords": [224,313,676,246]
+    },
+    {
+        "folder": "001093",
+        "start": 2,
+        "start_coords": [0,177,274,121],
+        "end": 57,
+        "end_coords": [159,111,442,109]
+    },
+    {
+        "folder": "001094",
+        "start": 8,
+        "start_coords": [466,315,809,401],
+        "end": 72,
+        "end_coords": [1,355,544,228]
+    },
+    {
+        "folder": "001095",
+        "start": 24,
+        "start_coords": [922,227,355,232],
+        "end": 96,
+        "end_coords": [962,311,315,196]
+    },
+    {
+        "folder": "001096",
+        "start": 10,
+        "start_coords": [745,241,271,157],
+        "end": 84,
+        "end_coords": [669,283,222,179]
+    },
+    {
+        "folder": "001097",
+        "start": 18,
+        "start_coords": [136,308,568,312],
+        "end": 100,
+        "end_coords": [171,210,447,144]
+    },
+    {
+        "folder": "001098",
+        "start": 8,
+        "start_coords": [692,269,528,446],
+        "end": 30,
+        "end_coords": [853,344,426,374]
+    },
+    {
+        "folder": "001099",
+        "start": 0,
+        "start_coords": [458,268,458,286],
+        "end": 76,
+        "end_coords": [1,229,315,181]
+    }
+]

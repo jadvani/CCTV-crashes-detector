@@ -16,7 +16,7 @@ ydata = np.sin(xdata)
 
 fig, ax = plt.subplots()
 line, = ax.plot(xdata, ydata)
-img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\000166\\101.jpg")
+img=cv2.imread("F:\\TFM_datasets\\extracted_frames\\001019\\81.jpg")
 
 
 
