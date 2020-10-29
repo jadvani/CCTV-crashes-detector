@@ -14,25 +14,29 @@ import matplotlib.pyplot as plt
 process = opencv_processor('F:\\TFM_datasets\\extracted_frames\\000079',interval=2, threshold=30, dilation=Dilation.HIGH)
 process.process_folder()
 
+# OpenCV
 crashes = process.possible_crash_sections
 
+#YOLO 
 yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
 yolo.print_coco_names_folderpath()
 final_crashes = []
 res = []
 for possible_crash in crashes:
-
-    img,boxes, ids=yolo.process_image(possible_crash)
+    
+    img,boxes,ids=yolo.process_image(possible_crash)
     yolo.get_union_areas(boxes)
     potential_crashes=yolo.potential_crashes
     i = 0
     for coord in yolo.coord_unions:
         print(i)
-        res=cv2.rectangle(yolo.original_image, (coord[0], coord[1]), (coord[0]+coord[2], coord[1]+coord[3]), (255, 0, 0), 2)
+        org_img = yolo.original_image
+        res=cv2.rectangle(org_img, (coord[0], coord[1]), (coord[0]+coord[2], coord[1]+coord[3]), (255, 0, 0), 2)
         #final_crashes.append(res)
         plt.imshow(res)
         plt.pause(2)
         i=i+1
+        plt.close()
         
         
     

@@ -9,9 +9,11 @@ import os
 class yolo_detector():
 
     
-    def __init__(self,coco_folderpath, confidence=0.5,threshold=0.3):
+    def __init__(self,coco_folderpath, confidence=0.5,threshold=0.3, draw_over_image=False, coord_similarity=20):
         self.coco_folder_path = coco_folderpath
+        self.draw_over_image = draw_over_image
         self.confidence=confidence
+        self.coord_similarity = coord_similarity
         self.threshold = threshold
         labelsPath = os.path.sep.join([coco_folderpath, "coco.names"])
         self.LABELS = open(labelsPath).read().strip().split("\n")
@@ -71,11 +73,12 @@ class yolo_detector():
                 (x, y) = (boxes[i][0], boxes[i][1])
                 (w, h) = (boxes[i][2], boxes[i][3])
                 dict_result[i] = classIDs[i], boxes[i]
-                color = [int(c) for c in self.COLORS[classIDs[i]]]
-                cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
-                text = "{}: {:.4f}".format(self.LABELS[classIDs[i]], confidences[i])
-                cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
-			0.5, color, 2)
+                if(self.draw_over_image):
+                    color = [int(c) for c in self.COLORS[classIDs[i]]]
+                    cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
+                    text = "{}: {:.4f}".format(self.LABELS[classIDs[i]], confidences[i])
+                    cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
+    			0.5, color, 2)
         return image, boxes, classIDs
                 
     def union(self, a,b):
@@ -100,6 +103,19 @@ class yolo_detector():
     def is_empty(self, any_structure):
         return False if any_structure else True
     
+    #given a limit number, check if two ints are similar or not. 
+    def number_in_range(self,num1,num2):
+        return (abs(num1-num2)<=self.coord_similarity and abs(num1-num2)>=0)
+
+# given two coordinates as tuples, check if these are very similar or not. This means that a similar region was already grabbed to be studied 
+    def similar_tuples(self,a,b):
+        return self.number_in_range(a[0],b[0]) and self.number_in_range(a[1],b[1]) and self.number_in_range(a[2],b[2]) and self.number_in_range(a[3],b[3])
+    def similar_tuple_in_list(self, tuple_to_analyze):
+        for union in self.coord_unions:
+            if(self.similar_tuples(tuple_to_analyze, union)):
+                return True
+        return False
+    
     def get_union_areas(self, boxes):
         for i in range(0, len(boxes)-1):
             for j in range(0, len(boxes)-1):
@@ -107,15 +123,22 @@ class yolo_detector():
                     intersect = self.intersection(boxes[i],boxes[j])
                     if(not(self.is_empty(intersect))):
                         union_from_intersection = self.union(boxes[i],boxes[j])
-                        if(union_from_intersection not in self.coord_unions):
+                        if(union_from_intersection not in self.coord_unions and not self.similar_tuple_in_list(union_from_intersection)):
                             self.coord_unions.append(union_from_intersection)
                             crop = self.original_image[union_from_intersection[1]:union_from_intersection[1]+union_from_intersection[3], union_from_intersection[0]:union_from_intersection[0]+union_from_intersection[2]]
                             self.potential_crashes.append(crop)
                                         
-
-
-
-
-
-
-
+# import matplotlib.pyplot as plt
+yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3, draw_over_image=False, coord_similarity=20)
+yolo.print_coco_names_folderpath()
+final_crashes = []
+res = []
+possible_crash=cv2.imread('F:\\TFM_datasets\\extracted_frames\\000079\\20.jpg')
+img,boxes, ids=yolo.process_image(possible_crash)
+yolo.get_union_areas(boxes)
+potential_crashes=yolo.potential_crashes
+i = 0
+print(len(yolo.coord_unions))
+for coord in yolo.coord_unions:
+    print(coord)
+    
