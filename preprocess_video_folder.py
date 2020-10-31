@@ -10,7 +10,7 @@ from dilation import Dilation
 from yolo_detector import yolo_detector
 import cv2
 import matplotlib.pyplot as plt
-
+import predict_yolo_image
 process = opencv_processor('F:\\TFM_datasets\\extracted_frames\\000079',interval=2, threshold=30, dilation=Dilation.HIGH)
 process.process_folder()
 
@@ -42,4 +42,6 @@ for possible_crash in crashes:
             pass
         
       
-    
+for crash in final_crashes:
+    cv2.imwrite('evaluate_image.jpg',crash)
+    predict_yolo_image.predict('evaluate_image.jpg')    
