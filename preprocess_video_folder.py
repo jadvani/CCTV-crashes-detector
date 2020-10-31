@@ -18,12 +18,11 @@ process.process_folder()
 crashes = process.possible_crash_sections
 
 #YOLO 
-yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
-yolo.print_coco_names_folderpath()
 final_crashes = []
-res = []
+
 for possible_crash in crashes:
-    
+    yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3)
+    yolo.print_coco_names_folderpath()
     img,boxes,ids=yolo.process_image(possible_crash)
     yolo.get_union_areas(boxes)
     potential_crashes=yolo.potential_crashes
@@ -31,12 +30,16 @@ for possible_crash in crashes:
     for coord in yolo.coord_unions:
         print(i)
         org_img = yolo.original_image
-        res=cv2.rectangle(org_img, (coord[0], coord[1]), (coord[0]+coord[2], coord[1]+coord[3]), (255, 0, 0), 2)
+        # res=cv2.rectangle(org_img, (coord[0], coord[1]), (coord[0]+coord[2], coord[1]+coord[3]), (255, 0, 0), 2)
         #final_crashes.append(res)
-        plt.imshow(res)
-        plt.pause(2)
-        i=i+1
-        plt.close()
+        try:
+            res = org_img[coord[1]:coord[1]+coord[3],coord[0]:coord[0]+coord[2]]
+
+            i=i+1
+            if((res.shape[0]>0) and (res.shape[1]>0)): # si la imagen está vacía, al tratar de ver el tamaño salta un error
+                final_crashes.append(res) #intersecciones finales que van a ser procesadas con red neuronal
+        except:
+            pass
         
-        
+      
     
