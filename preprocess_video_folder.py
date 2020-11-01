@@ -11,7 +11,7 @@ from yolo_detector import yolo_detector
 import cv2
 import matplotlib.pyplot as plt
 import predict_yolo_image
-process = opencv_processor('F:\\TFM_datasets\\extracted_frames\\000079',interval=2, threshold=30, dilation=Dilation.HIGH)
+process = opencv_processor('F:\\TFM_datasets\\extracted_frames\\001084',interval=3, threshold=30, dilation=Dilation.HIGH)
 process.process_folder()
 
 # OpenCV
@@ -36,12 +36,16 @@ for possible_crash in crashes:
             res = org_img[coord[1]:coord[1]+coord[3],coord[0]:coord[0]+coord[2]]
 
             i=i+1
-            if((res.shape[0]>0) and (res.shape[1]>0)): # si la imagen está vacía, al tratar de ver el tamaño salta un error
-                final_crashes.append(res) #intersecciones finales que van a ser procesadas con red neuronal
+            if((res.shape[0]>0) and (res.shape[1]>0)): # si la imagen no está vacía
+                final_crashes.append(res) #se procesará
         except:
             pass
-        
+# CNN   
       
 for crash in final_crashes:
     cv2.imwrite('evaluate_image.jpg',crash)
-    predict_yolo_image.predict('evaluate_image.jpg')    
+    is_accident=predict_yolo_image.predict('evaluate_image.jpg')  
+    if(is_accident):
+        plt.imshow(crash)
+        plt.pause(1)
+        plt.close()

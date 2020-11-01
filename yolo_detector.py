@@ -31,26 +31,8 @@ class yolo_detector():
     def print_coco_names_folderpath(self):
         print(self.coco_folder_path)
         
-    def process_image(self, image):
-        # load our input image and grab its spatial dimensions
-        self.original_image = image
-        (H, W) = image.shape[:2]
-        # determine only the *output* layer names that we need from YOLO
-        ln = self.net.getLayerNames()
-        ln = [ln[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
-        # construct a blob from the input image and then perform a forward
-        # pass of the YOLO object detector, giving us our bounding boxes and
-        # associated probabilities
-        blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (416, 416),swapRB=True, crop=False)
-        self.net.setInput(blob)
-        start = time.time()
-        layerOutputs = self.net.forward(ln)
-        end = time.time()
-        # show timing information on YOLO
-        print("[INFO] YOLO took {:.6f} seconds".format(end - start))
-        
-
-        # initialize our lists of detected bounding boxes, confidences, and
+    def get_yolo_single_boxes(self, W, H, layerOutputs, image):
+               # initialize our lists of detected bounding boxes, confidences, and
         # class IDs, respectively
         boxes, confidences, classIDs = ([],[],[])
         dict_result = dict()
@@ -79,6 +61,28 @@ class yolo_detector():
                     text = "{}: {:.4f}".format(self.LABELS[classIDs[i]], confidences[i])
                     cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
     			0.5, color, 2)
+        return image, boxes, classIDs
+        
+    def process_image(self, image):
+        # load our input image and grab its spatial dimensions
+        self.original_image = image
+        (H, W) = image.shape[:2]
+        # determine only the *output* layer names that we need from YOLO
+        ln = self.net.getLayerNames()
+        ln = [ln[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
+        # construct a blob from the input image and then perform a forward
+        # pass of the YOLO object detector, giving us our bounding boxes and associated probabilities
+        blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (416, 416),swapRB=True, crop=False)
+        self.net.setInput(blob)
+        start = time.time()
+        layerOutputs = self.net.forward(ln)
+        end = time.time()
+        # show timing information on YOLO
+        print("[INFO] YOLO took {:.6f} seconds".format(end - start))
+        # bounding boxes from image. Image is returned in case we set draw_over_image as True in class
+        image, boxes, classIDs = self.get_yolo_single_boxes(W, H, layerOutputs, image)
+
+ 
         return image, boxes, classIDs
                 
     def union(self, a,b):

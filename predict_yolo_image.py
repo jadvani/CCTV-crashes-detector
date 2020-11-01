@@ -22,6 +22,7 @@ def predict(img_path):
     else:
         prediction = '1 (without accident)'
     print(prediction)
+    return True if result[0][0] >= 0.5 else False
 
 # #%%
 # from keras.models import load_model
