@@ -7,8 +7,8 @@ Created on Sat Oct 31 07:11:33 2020
 #im_pil = Image.fromarray(img)
 
 
-from keras.models import load_model
-from keras.preprocessing import image 
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image 
 import numpy as np
 test_model = load_model('model.h5')
 def predict(img_path):
