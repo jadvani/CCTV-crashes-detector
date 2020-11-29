@@ -9,7 +9,7 @@ import numpy as np
 import shutil
 
 # # Creating Train / Val / Test folders (One time use)
-root_dir = 'F:/TFM_datasets/car-crashes-detector/dataset'
+root_dir = 'F:/TFM_datasets/reentreno'
 posCls = '/1'
 negCls = '/2'
 

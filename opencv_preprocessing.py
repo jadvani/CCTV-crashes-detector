@@ -27,7 +27,7 @@ class opencv_processor():
     # Cuanto más alto, menos siluetas se detectan, y la matriz euclídea será más pequeña.
     
     # dilation: tipo de dilatación que se aplica en contornos. NORMAL = 3, HIGH = 5
-    def __init__(self,frames_path,  dilation=Dilation.NORMAL, interval = 2, threshold = 30):
+    def __init__(self,frames_path,  dilation=Dilation.NORMAL, interval = 2, threshold = 30,show_images=False):
         self.frames_path = frames_path
         self.interval = interval
         self.threshold = threshold
@@ -35,6 +35,7 @@ class opencv_processor():
         self.matrix_counter, self.previous_centers = (0,0)
         self.dilation = dilation
         self.interval_end=[]
+        self.show_images=show_images
         
            #leer frames de una carpeta
     def read_frames(self, frames_path):
@@ -173,7 +174,8 @@ class opencv_processor():
                 self.interval_end=self.col_images[i+(self.interval-1)]
                 [dmy, valid_cntrs, final_countours]=self.diff_frames(self.col_images[i],self.interval_end) # diferencias entre fotogramas
                 [dmy,centers]=self.detect_matrix_changes(dmy,final_countours,i,valid_cntrs) # extraemos matriz euclídea y buscamos posible área de accidente
-                self.show_processed_image(i,dmy) # mostramos el resultado del procesado anterior. TODO: cortar imagen
+                if(self.show_images):
+                    self.show_processed_image(i,dmy) # mostramos el resultado del procesado anterior. TODO: cortar imagen
                 self.matrix_counter = self.matrix_counter + 1 # número de veces que calculamos la matriz euclídea. Variable meramente informativa.
                 self.previous_centers = len(centers) # si hay cambios muy bruscos de un intervalo a otro, lo vamos comprobando con los centroides detectados.
                 

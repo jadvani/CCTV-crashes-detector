@@ -20,17 +20,15 @@ for file in onlyfiles:
 
 #%%
 from math import sqrt
-total_p = 360
-tp = 341
-fp = total_p - tp
-total_n = 375
+tp = 18
+fp = 65
 
-tn = 359
-fn = total_p - tn
+tn = 52
+fn = 35
 precision = tp / (tp+fp)
 recall = tp / (tp+fn)
 f1 = 2*(precision*recall)/(precision+recall)
 mcc=((tp*tn)-(fp*fn))/sqrt((tp+fp)*(tp+fn)*(tn+fp)*(tn+fn))
-accuracy = (tp + tn) / (total_p+total_n)
+accuracy = (tp + tn) / (tp+tn+fp+fn)
 print("mcc="+str(mcc))
 print('accuracy: '+str(accuracy)+', precision: '+str(precision)+", recall: "+str(recall)+", f1:"+str(f1))
