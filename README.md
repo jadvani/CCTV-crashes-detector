@@ -23,7 +23,6 @@ The first dataset used to train the CNNs involved in this solution was taken fro
 Folder 1 includes 2500 images with label "without-accident".
 Folder 2 includes 2398 images with label "with-accident".
 
-<br>
 A second dataset of images has been created from the original [CADP dataset](https://ankitshah009.github.io/accident_forecasting_traffic_camera), taking multiple image parts and relabelling them. The final version of this new Dataset will be shared in Kaggle. 
 
 
