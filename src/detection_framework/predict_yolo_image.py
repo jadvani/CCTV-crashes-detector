@@ -4,8 +4,6 @@ Created on Sat Oct 31 07:11:33 2020
 
 @author: Javier
 """
-#im_pil = Image.fromarray(img)
-
 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image 

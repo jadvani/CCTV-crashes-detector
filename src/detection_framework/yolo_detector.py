@@ -3,7 +3,6 @@ import numpy as np
 import time
 import cv2
 import os
-# import geopandas as gpd
 
 
 class yolo_detector():
@@ -132,17 +131,5 @@ class yolo_detector():
                             crop = self.original_image[union_from_intersection[1]:union_from_intersection[1]+union_from_intersection[3], union_from_intersection[0]:union_from_intersection[0]+union_from_intersection[2]]
                             self.potential_crashes.append(crop)
                                         
-# # import matplotlib.pyplot as plt
-# yolo = yolo_detector("C:\\Users\\Javier\\Downloads\\darknet-master\\cfg",0.2,0.3, draw_over_image=False, coord_similarity=20)
-# yolo.print_coco_names_folderpath()
-# final_crashes = []
-# res = []
-# possible_crash=cv2.imread('F:\\TFM_datasets\\extracted_frames\\000079\\20.jpg')
-# img,boxes, ids=yolo.process_image(possible_crash)
-# yolo.get_union_areas(boxes)
-# potential_crashes=yolo.potential_crashes
-# i = 0
-# print(len(yolo.coord_unions))
-# for coord in yolo.coord_unions:
-#     print(coord)
+
     
