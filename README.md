@@ -27,15 +27,15 @@ A second dataset of images has been created from the original [CADP dataset](htt
 
 ## Train and test the model
 
-1. Once you download the two-classes dataset, generate the train/test/val split using the script src/automation/train_test_split.py
+1. Once you download the two-classes dataset, generate the train/test/val split using the script `src/automation/train_test_split.py`
 
-2. Run the car-crashes-detector.py to train the model.
+2. Run the `src/train_cnn/car-crashes-detector.py` or `src/train_cnn/test_transfer.py` to train the model.
 
-3. Predict a single image with src/pocs/predict-single-image.py
+3. Predict a single image with `src/pocs/predict-single-image.py`
 
 
 ## Run the complete framework solution
 
 1. Download at least one of the accident directories from CADP. 
-2. src/detection_framework/process_folder.py will run all the detection steps needed to perform the classification: OpenCV + YOLO + CNN
+2. `src/detection_framework/process_folder.py` will run all the detection steps needed to perform the classification: OpenCV + YOLO + CNN
 3. The result of the execution shows the abnormal image crops taken from the whole video recording. 
