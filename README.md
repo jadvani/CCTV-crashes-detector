@@ -25,15 +25,7 @@ Folder 2 includes 2398 images with label "with-accident".
 
 A second dataset of images has been created from the original [CADP dataset](https://ankitshah009.github.io/accident_forecasting_traffic_camera), taking multiple image parts and relabelling them. The final version of this new Dataset will be shared in Kaggle. 
 
-
-# How to prepare the enviroment
-
-1. Based on the original . TODO: upload dataset to kaggle. 
-2. The script process_folder.py runs all the block dependencies involved in the accident detection. Please, note that we are using Python 3.8 and Keras API from Tensorflow to run this code. 
-
-Further details can be found on the published documente [here] TODO:insert link
-
-## How to train and test the model
+## Train and test the model
 
 1. Once you download the two-classes dataset, generate the train/test/val split using the script src/automation/train_test_split.py
 
@@ -42,7 +34,7 @@ Further details can be found on the published documente [here] TODO:insert link
 3. Predict a single image with src/pocs/predict-single-image.py
 
 
-## How to run the complete framework solution
+## Run the complete framework solution
 
 1. Download at least one of the accident directories from CADP. 
 2. src/detection_framework/process_folder.py will run all the detection steps needed to perform the classification: OpenCV + YOLO + CNN
