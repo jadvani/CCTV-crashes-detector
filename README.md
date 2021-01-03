@@ -1,8 +1,8 @@
 # Accidents Detection on CCTV images. 
-
+  <img src="https://github.com/jadvani/car-crashes-detector/blob/master/img/preview.png">
  Detect if an abnormal action happens given a CCTV video sequence, using Computer Vision and Convolutional Neural Networks. These code scripts are part of my Final Masters Project for the University of Seville. Special thanks to Ignacio Pérez-Herrera and Miguel Ángel Martínez del Amor for all the support given.  
 <p align="center">
-  <img src="https://github.com/jadvani/car-crashes-detector/blob/master/img/preview.png">
+
 </p>
 
 <br>
